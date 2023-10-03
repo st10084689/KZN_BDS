@@ -49,7 +49,6 @@
 
         <RelativeLayout
             android:layout_marginTop="-60dp"
-
             android:id="@+id/main_content_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -88,6 +87,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/donation_button_background"
                     android:text="@string/donate_now"
+                    android:textColor="@color/grey"
                     android:fontFamily="@font/roboto_meduim"
                     android:layout_toRightOf="@id/donation_prompt_txt"
                     android:layout_centerVertical="true"
