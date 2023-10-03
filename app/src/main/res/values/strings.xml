@@ -3,4 +3,10 @@
     <string name="Home">Home</string>
     <string name="help_prompt"> Help Our \n Mission</string>
     <string name="donate_now">Donate</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home\n</string>
+    <string name="shopping">Shopping</string>
+    <string name="events">Events</string>
+    <string name="about">About Us</string>
 </resources>
