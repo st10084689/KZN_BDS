@@ -9,4 +9,7 @@
     <string name="shopping">Shopping</string>
     <string name="events">Events</string>
     <string name="about">About Us</string>
+    <string name="UpComingEvents">UpComing Events</string>
+    <string name="EventTitle">Event Title</string>
+    <string name="description">description \n</string>
 </resources>
