@@ -9,14 +9,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class eventsRecyclerAdapter extends RecyclerView.Adapter<eventsRecyclerAdapter.ItemHolder> {
 
-    private static final String TAG = "eventsRecyclerAdapter";
+
+
+public class shoppingRecyclerAdapter  extends RecyclerView.Adapter<shoppingRecyclerAdapter.ItemHolder> {
+
+    private static final String TAG = "shoppingRecyclerAdapter";
 
     @NonNull
     @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.events_recycler_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_recycler_card, parent, false);
         return new ItemHolder(view);
     }
 
@@ -27,22 +30,23 @@ public class eventsRecyclerAdapter extends RecyclerView.Adapter<eventsRecyclerAd
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 6;
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder{
 
-        private TextView eventTitle;
-        private TextView eventDescripion;
-        private ImageView eventImage;
+        private TextView shoppingTitle;
+        private TextView shoppingDescripion;
+        private ImageView shoppingImage;
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
-            eventImage = itemView.findViewById(R.id.shopping_image);
-            eventTitle = itemView.findViewById(R.id.shopping_title_txt);
-            eventDescripion = itemView.findViewById(R.id.shopping_description_txt);
+            shoppingImage = itemView.findViewById(R.id.shopping_image);
+            shoppingTitle = itemView.findViewById(R.id.shopping_title_txt);
+            shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
 
 
         }
 
     }
 }
+

@@ -12,4 +12,5 @@
     <string name="UpComingEvents">UpComing Events</string>
     <string name="EventTitle">Event Title</string>
     <string name="description">description \n</string>
+    <string name="shopping_title">Shopping Title</string>
 </resources>
