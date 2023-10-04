@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 public class HomeFragment extends Fragment {
 
     private RecyclerView eventRecycler;
+    private RecyclerView shoppingRecycler;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,12 +24,21 @@ public class HomeFragment extends Fragment {
     }
 
     private void init(View view){
+        //initializing the event recycler
         eventRecycler = view.findViewById(R.id.events_recycler);
 
         eventRecycler.setHasFixedSize(true);
         eventRecycler.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false));
-        eventsRecyclerAdapter adapter = new eventsRecyclerAdapter();
-        eventRecycler.setAdapter(adapter);
+        eventsRecyclerAdapter eventAdapter = new eventsRecyclerAdapter();
+        eventRecycler.setAdapter(eventAdapter);
+
+        //initializing the event recycler
+        shoppingRecycler = view.findViewById(R.id.shopping_recycler);
+
+        shoppingRecycler.setHasFixedSize(true);
+        shoppingRecycler.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false));
+        shoppingRecyclerAdapter shoppingAdapter = new shoppingRecyclerAdapter();
+        shoppingRecycler.setAdapter(shoppingAdapter);
 
     }
 
