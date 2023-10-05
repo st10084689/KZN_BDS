@@ -10,6 +10,7 @@
         android:id="@+id/content_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="-30dp"
         android:layout_above="@id/nav_bar">
 
 
@@ -20,8 +21,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/bottom_nav_bar_background"
+        android:background="@android:color/transparent"
         >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:background="@drawable/nav_bar_bottom"/>
         <LinearLayout
             android:layout_centerHorizontal="true"
             android:layout_marginTop="8dp"

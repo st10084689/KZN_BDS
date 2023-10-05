@@ -2,11 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".HomeFragment">
     <ScrollView
         android:layout_width="match_parent"
-
         android:layout_height="match_parent">
 
             <RelativeLayout
@@ -94,6 +93,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/events_recycler">
+
+                <TextView
+                    android:id="@+id/event_see_all_txt"
+                    android:textSize="18sp"
+                    android:layout_marginRight="1dp"
+                    android:layout_toLeftOf="@id/event_see_all_chevron"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/montserrat_regular"
+                    android:textColor="@color/grey"
+                    android:text="@string/See_all"/>
+
+                <ImageView
+                    android:id="@+id/event_see_all_chevron"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="1dp"
+                    android:background="@drawable/chevron_right"
+                    android:layout_width="25dp"
+                    android:layout_height="30dp"
+                    android:text="@string/See_all"/>
+            </RelativeLayout>
         </RelativeLayout>
 
         <RelativeLayout
@@ -123,9 +149,37 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/shopping_recycler"
+                android:layout_marginTop="20dp"
                 android:layout_below="@id/shopping_underline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/shopping_recycler">
+
+            <TextView
+                android:id="@+id/see_all_txt"
+                android:textSize="18sp"
+                android:layout_marginRight="1dp"
+                android:layout_toLeftOf="@id/see_all_chevron"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/montserrat_regular"
+                android:textColor="@color/grey"
+                android:text="@string/See_all"/>
+
+            <ImageView
+                android:id="@+id/see_all_chevron"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="1dp"
+                android:background="@drawable/chevron_right"
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:text="@string/See_all"/>
+        </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
     <RelativeLayout

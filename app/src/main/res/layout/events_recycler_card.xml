@@ -44,13 +44,7 @@
                 android:gravity="center"
                 android:textSize="11sp"
                 android:text="@string/description"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="13dp"
-                android:background="@drawable/chevron_right"/>
+
 </RelativeLayout>
         </RelativeLayout>
         
