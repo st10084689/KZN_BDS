@@ -49,4 +49,3 @@ public class shoppingRecyclerAdapter  extends RecyclerView.Adapter<shoppingRecyc
 
     }
 }
-
