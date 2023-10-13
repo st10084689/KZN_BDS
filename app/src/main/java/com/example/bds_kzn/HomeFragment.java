@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment {
         shoppingRecycler.setHasFixedSize(true);
         shoppingRecycler.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false));
         shoppingRecyclerAdapter shoppingAdapter = new shoppingRecyclerAdapter();
+
         shoppingRecycler.setAdapter(shoppingAdapter);
 
     }
