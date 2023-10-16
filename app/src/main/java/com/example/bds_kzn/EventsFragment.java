@@ -3,6 +3,7 @@ package com.example.bds_kzn;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -10,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class EventsFragment extends Fragment {
-    private RecyclerView eventRecycler;
+    private RecyclerView eventPageRecycler;
 
 
     public EventsFragment() {
@@ -27,8 +28,11 @@ public class EventsFragment extends Fragment {
 
     public void init(View view){
         //initializing the recycler
-        eventRecycler = view.findViewById(R.id.event_page_recycler);
+        eventPageRecycler = view.findViewById(R.id.event_page_recycler);
 
-
+        eventPageRecycler.setHasFixedSize(true);
+        eventPageRecycler.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
+        EventsPageRecyclerAdapter eventAdapter = new EventsPageRecyclerAdapter();
+        eventPageRecycler.setAdapter(eventAdapter);
     }
 }

@@ -40,8 +40,8 @@ public class shoppingRecyclerAdapter  extends RecyclerView.Adapter<shoppingRecyc
         private ImageView shoppingImage;
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
-            shoppingImage = itemView.findViewById(R.id.shopping_image);
-            shoppingTitle = itemView.findViewById(R.id.shopping_title_txt);
+            shoppingImage = itemView.findViewById(R.id.statement_badge);
+            shoppingTitle = itemView.findViewById(R.id.statement_title);
             shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
 
 

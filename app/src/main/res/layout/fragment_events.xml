@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".EventsFragment">
     <ScrollView
         android:layout_width="match_parent"
@@ -54,21 +55,24 @@
                 </RelativeLayout>
             </RelativeLayout>
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_marginTop="-20dp"
                 android:id="@+id/main_content_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/top_section"
-                android:background="@drawable/main_content_background">
+                app:cardCornerRadius="24dp"
+                >
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/event_page_recycler"
+                android:layout_marginTop="32dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
 
-            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
