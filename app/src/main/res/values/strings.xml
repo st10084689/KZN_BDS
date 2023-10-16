@@ -14,4 +14,10 @@
     <string name="description">description \n</string>
     <string name="shopping_title">Shopping Title</string>
     <string name="See_all">See All</string>
+    <string name="aboutUsHeading">The KwaZulu-Natal Blind and Deaf Society was established in 1936</string>
+    <string name="aboutUsParagraph">...their purpose, providing services and opportunities that ultimately improve the quality of life of Blind and Partially-Sighted people. During the 1960s we extended our services to the Deaf and Hard of Hearing people.\nThe Society currently reaches the poor, unemployed African people living in rural areas who do not have the finances or ability to receive services. The greatest challenge that the Society faces, is how to improve these unfortunate individuals quality of life. The sad situation is that these almost forgotten people are not only deprived, but also disabled, which leaves them feeling very inadequate and incapable, and the sad fact is that most of them receive no external assistance.</string>
+    <string name="statement">To be the premier provider of services and opportunities that ultimately improve the quality of life of Blind, Deaf, Deafblind persons.</string>
+    <string name="statement_title">statement</string>
+    <string name="memberName">Member\n</string>
+    <string name="MemberTitle"><![CDATA[KwaZulu-Natal Blind & Deaf Society Board Members]]></string>
 </resources>

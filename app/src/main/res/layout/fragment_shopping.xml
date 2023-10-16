@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ShoppingFragment">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -54,18 +53,39 @@
                 </RelativeLayout>
             </RelativeLayout>
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_marginTop="-20dp"
                 android:id="@+id/main_content_background"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/top_section"
-                android:background="@drawable/main_content_background">
+                app:cardCornerRadius="24dp"
+                >
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/shopping_page_recycler"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/shopping_page_recycler_second"
+                    android:layout_width="0dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    />
+
+                </LinearLayout>
 
 
 
-
-            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
         </RelativeLayout>
-    </ScrollView>
 </RelativeLayout>

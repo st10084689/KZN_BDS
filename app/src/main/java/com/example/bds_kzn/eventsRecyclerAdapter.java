@@ -37,8 +37,8 @@ public class eventsRecyclerAdapter extends RecyclerView.Adapter<eventsRecyclerAd
         private ImageView eventImage;
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
-            eventImage = itemView.findViewById(R.id.shopping_image);
-            eventTitle = itemView.findViewById(R.id.shopping_title_txt);
+            eventImage = itemView.findViewById(R.id.statement_badge);
+            eventTitle = itemView.findViewById(R.id.statement_title);
             eventDescripion = itemView.findViewById(R.id.shopping_description_txt);
 
 
