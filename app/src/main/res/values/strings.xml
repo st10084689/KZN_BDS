@@ -20,4 +20,10 @@
     <string name="statement_title">statement</string>
     <string name="memberName">Member\n</string>
     <string name="MemberTitle"><![CDATA[KwaZulu-Natal Blind & Deaf Society Board Members]]></string>
+    <string name="eventDetails">Event Details</string>
+    <string name="eventDescription">Event Discription</string>
+    <string name="shoppingDetails">Shopping Title</string>
+    <string name="shoppingDescription">shopping description</string>
+    <string name="Donations">Donations\n</string>
+    <string name="Contribution">Your \n Contribution \n means the \n world!</string>
 </resources>
