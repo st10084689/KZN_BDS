@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EventDetails">
+
+                <RelativeLayout
+                    android:id="@+id/top_section"
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="-5dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/main_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        android:background="@drawable/background_image"/>
+
+                    <RelativeLayout
+                        android:id="@+id/menu_relative"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="35dp"
+                            android:background="@drawable/circle">
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/baseline_arrow_back_24"/>
+
+
+                        </RelativeLayout>
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginRight="35dp"
+                            android:background="@drawable/nav_slider_btn"/>
+
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/main_content_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/top_section"
+                    app:cardCornerRadius="24dp"
+                    android:layout_marginTop="-15dp"
+                    >
+                    <ScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        >
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/EventDetailsTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/eventDetails"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textSize="36dp"
+                        android:textColor="@color/black"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="32dp"
+                        />
+    <TextView
+        android:id="@+id/EventDetailsDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/eventDescription"
+        android:layout_below="@id/EventDetailsTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="18sp"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/imageViewPager"
+        android:layout_below="@id/EventDetailsDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+    <RelativeLayout
+        android:id="@+id/bottomTxtBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewPager"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:text="00/00/0000"
+            />
+        <TextView
+            android:id="@+id/seperator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="18sp"
+            android:text="|"
+            android:layout_toRightOf="@id/date"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:textSize="18sp"
+            android:text="Durban, KwaZulu-Natal"
+            android:layout_toRightOf="@id/seperator"
+            android:textColor="@color/black"/>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
+
+                    </ScrollView>
+            </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

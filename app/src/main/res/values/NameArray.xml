@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="name_array">
+        <item>Type</item>
+        <item>Mr</item>
+        <item>Miss</item>
+        <item>Mrs</item>
+    </string-array>
+</resources>
