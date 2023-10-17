@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DonationPersonalInfo">
-
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -68,6 +70,8 @@
             app:cardCornerRadius="24dp"
             >
 
+
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -113,27 +117,29 @@
                         <Spinner
                             android:id="@+id/NameSpinner"
                             android:entries="@array/name_array"
-                            android:background="@drawable/donation_option_background"
+                            android:background="@drawable/title_spinner"
                             android:layout_width="71dp"
                             android:text="Type"
                             android:textStyle="bold"
+                            android:textAlignment="center"
                             android:gravity="center"
                             android:textSize="20sp"
                             android:fontFamily="@font/monserrat_bold"
                             android:textColor="@color/black"
                             android:spinnerMode="dropdown"
-                            android:layout_height="60dp" />
+                            android:layout_height="61dp" />
 
                         <EditText
                             android:id="@+id/Name"
-                            android:layout_toRightOf="@id/NameSpinner"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="28sp"
-                            android:fontFamily="@font/montserrat_semi_bold"
+                            android:layout_marginLeft="8dp"
+                            android:layout_toRightOf="@id/NameSpinner"
                             android:background="@drawable/donation_option_background"
+                            android:fontFamily="@font/montserrat_semi_bold"
+                            android:hint="Name"
                             android:textAlignment="center"
-                            android:hint="Name"/>
+                            android:textSize="28sp" />
                     </RelativeLayout>
 
                     <EditText
@@ -155,16 +161,18 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/surname"
                         android:layout_marginTop="20dp">
-                    <androidx.appcompat.widget.AppCompatCheckBox
+                    <CheckBox
                         android:id="@+id/IscCompanyCheckBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:button="@drawable/checkbox"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerVertical="true"
+                        android:button="@drawable/check_box_item"
                         />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="25dp"
                             android:layout_toRightOf="@id/IscCompanyCheckBox"
                             android:layout_centerVertical="true"
                             android:text="Is this donation on behalf \n of company?"/>
@@ -202,11 +210,13 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/comment"
                         android:layout_marginTop="20dp">
-                        <androidx.appcompat.widget.AppCompatCheckBox
+                        <CheckBox
                             android:id="@+id/IsAnonymousCheckBox"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:button="@drawable/checkbox"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:button="@drawable/check_box_item"
+                            android:gravity="center"
+
                             />
 
                         <TextView
@@ -214,6 +224,7 @@
                             android:layout_height="wrap_content"
                             android:layout_toRightOf="@id/IsAnonymousCheckBox"
                             android:layout_centerVertical="true"
+                            android:layout_marginLeft="25dp"
                             android:text="Make donation anonymous?"/>
                     </RelativeLayout>
 
@@ -223,21 +234,23 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/anonymousCheckBox"
                         android:layout_marginTop="20dp">
-                        <androidx.appcompat.widget.AppCompatCheckBox
+
+                        <CheckBox
                             android:id="@+id/IsTermsCheckBox"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:button="@drawable/checkbox"
-                            />
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:button="@drawable/check_box_item" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_toRightOf="@id/IsTermsCheckBox"
                             android:layout_centerVertical="true"
+                            android:layout_marginLeft="25dp"
                             android:text="Agree to terms? "/>
 
                         <TextView
+                            android:id="@+id/termsTxt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
@@ -258,7 +271,8 @@
                         android:textColor="@color/white"
                         android:textAlignment="center"
                         android:fontFamily="@font/montserrat_semi_bold"
-                        android:background="@drawable/resource_continue"/>
+                        android:background="@drawable/resource_continue"
+                        android:layout_marginBottom="15dp"/>
 
 
                 </RelativeLayout>
@@ -269,4 +283,5 @@
 
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

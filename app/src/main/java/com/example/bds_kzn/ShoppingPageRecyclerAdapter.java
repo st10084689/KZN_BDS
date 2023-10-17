@@ -1,5 +1,6 @@
 package com.example.bds_kzn;
 
+import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,22 +17,28 @@ public class ShoppingPageRecyclerAdapter  extends RecyclerView.Adapter<RecyclerV
     private static final int VIEW_TYPE_NORMAL = 0;
     private static final int VIEW_TYPE_SMALL = 1;
 
-    private static final int RECYCLER_ONE = 0;
-    private static final int RECYCLER_TWO = 1;
 
-    private int typeRecycler;
+    private Context context;
+
+    public ShoppingPageRecyclerAdapter(Context context) {
+        this.context = context;
+    }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if (viewType == VIEW_TYPE_SMALL) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_recycling_card_small, parent, false);
-            return new LargeItemHolder(view);
-        } else {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_page_recycler_card, parent, false);
-            return new NormalItemHolder(view);
+        View view;
+        switch (viewType) {
+            case VIEW_TYPE_SMALL:
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_recycling_card_small, parent, false);
+                return new NormalItemHolder(view);
+            case VIEW_TYPE_NORMAL:
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_page_recycler_card, parent, false);
+                return new LargeItemHolder(view);
         }
+        throw new IllegalStateException("Unknown viewType: " + viewType);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
@@ -40,31 +47,13 @@ public class ShoppingPageRecyclerAdapter  extends RecyclerView.Adapter<RecyclerV
 
     @Override
     public int getItemViewType(int position) {
-
-        Log.d(TAG, "getItemViewType: Type Recycler"+ typeRecycler+"\n"+
-                "position: "+ position);
-        if (typeRecycler == RECYCLER_ONE) {
-            Log.d(TAG, "getItemView: recycler one position: "+ position % 3);
-            return position % 3 == 0 ? VIEW_TYPE_SMALL : VIEW_TYPE_NORMAL;
-        }
-        if (typeRecycler == RECYCLER_TWO) {
-            Log.d(TAG, "getItemView: recycler two position: "+ position % 3);
-                if(position % 3 == 1/3 || position % 4 == 0) {
-                    return VIEW_TYPE_SMALL ;
-                }
-
-        }
-        return VIEW_TYPE_NORMAL;
+        return position % 3 == 0 ? VIEW_TYPE_SMALL : VIEW_TYPE_NORMAL;
     }
 
-
-    public void getRecyclerType(int typeRecycler){
-        typeRecycler = typeRecycler;
-    }
 
     @Override
     public int getItemCount() {
-        return 6;
+        return 12;
     }
 
     public class NormalItemHolder extends RecyclerView.ViewHolder {
@@ -94,4 +83,6 @@ public class ShoppingPageRecyclerAdapter  extends RecyclerView.Adapter<RecyclerV
             shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
         }
     }
+
+
 }
