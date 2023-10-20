@@ -16,6 +16,8 @@
 
     </FrameLayout>
 
+
+
     <RelativeLayout
         android:id="@+id/nav_bar"
         android:layout_width="match_parent"
@@ -48,10 +50,19 @@
                     android:layout_centerHorizontal="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/home_icon"
+                    android:src="@drawable/home_icon"
                     />
 
+                <ImageView
+                    android:id="@+id/home_underline"
+                    android:layout_width="15dp"
+                    android:layout_height="3dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/home_icon"/>
+
+
                 <TextView
+                    android:id="@+id/home_nav_txt"
                     android:layout_below="@id/home_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -75,10 +86,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/shopping_bag_icon"
+                    android:src="@drawable/shopping_bag_icon"
                     />
 
+                <ImageView
+                    android:id="@+id/shopping_underline"
+                    android:layout_width="15dp"
+                    android:layout_height="3dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/shopping_icon"/>
+
                 <TextView
+                    android:id="@+id/shopping_nav_txt"
                     android:layout_below="@id/shopping_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -102,10 +121,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/events_icon"
+                    android:src="@drawable/events_icon"
                     />
 
+                <ImageView
+                    android:id="@+id/event_underline"
+                    android:layout_width="15dp"
+                    android:layout_height="3dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/event_icon"/>
+
                 <TextView
+                    android:id="@+id/event_nav_txt"
                     android:layout_below="@id/event_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,11 +156,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/about_us_icon"
+                    android:src="@drawable/about_us_icon"
                     />
+                <ImageView
+                    android:id="@+id/about_underline"
+                    android:layout_width="15dp"
+                    android:layout_height="3dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/about_icon"/>
 
                 <TextView
-                    android:layout_below="@id/about_icon"
+                    android:id="@+id/about_nav_txt"
+                   android:layout_below="@id/about_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
