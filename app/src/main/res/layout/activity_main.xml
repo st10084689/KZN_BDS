@@ -105,7 +105,7 @@
                     android:textSize="11sp"
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/montserrat_semi_bold"
-                    android:text="@string/shopping"
+                    android:text="@string/shop"
                     />
 
 
@@ -167,7 +167,7 @@
 
                 <TextView
                     android:id="@+id/about_nav_txt"
-                   android:layout_below="@id/about_icon"
+                    android:layout_below="@id/about_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"

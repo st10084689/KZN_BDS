@@ -1,5 +1,6 @@
 package com.example.bds_kzn;
 
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,13 @@ public class shoppingRecyclerAdapter  extends RecyclerView.Adapter<shoppingRecyc
 
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
+        //if statement to make the last item in the list to have a margin of 15dp . change out 6 to the dataset size
+        if (position == 6 - 1) {
+
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.itemView.getLayoutParams();
+            params.rightMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, holder.itemView.getResources().getDisplayMetrics());
+            holder.itemView.setLayoutParams(params);
+        }
 
     }
 

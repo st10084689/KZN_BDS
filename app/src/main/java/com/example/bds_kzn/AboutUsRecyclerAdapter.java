@@ -1,5 +1,6 @@
 package com.example.bds_kzn;
 
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,6 +80,13 @@ public class AboutUsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                                 .load(statement.getImage())
                                 .centerCrop()
                                 .into(memberHolder.memberImage);
+                }
+
+                if (position == Statements.size() - 1) {
+
+                        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.itemView.getLayoutParams();
+                        params.rightMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, holder.itemView.getResources().getDisplayMetrics());
+                        holder.itemView.setLayoutParams(params);
                 }
         }
 

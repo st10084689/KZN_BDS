@@ -1,5 +1,6 @@
 package com.example.bds_kzn;
 
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +24,18 @@ public class eventsRecyclerAdapter extends RecyclerView.Adapter<eventsRecyclerAd
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
 
+        //if statement to make the last item in the list to have a margin of 15dp . change out 3 to the dataset size
+        if (position == 3 - 1) {
+
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.itemView.getLayoutParams();
+            params.rightMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, holder.itemView.getResources().getDisplayMetrics());
+            holder.itemView.setLayoutParams(params);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 3;//placeholder
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder{
