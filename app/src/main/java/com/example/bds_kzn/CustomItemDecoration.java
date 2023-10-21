@@ -21,7 +21,7 @@ public class CustomItemDecoration extends RecyclerView.ItemDecoration {
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         int position = parent.getChildAdapterPosition(view);
 
-        if (position % 3 == 0) {
+        if (position % 4 == 0) {
             setItemViewHeight(view, largeItemHeight);
         } else {
             setItemViewHeight(view, smallItemHeight);

@@ -2,6 +2,7 @@ package com.example.bds_kzn;
 
 import android.content.Context;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,10 @@ public class ShoppingPageRecyclerAdapter  extends RecyclerView.Adapter<RecyclerV
     private static final int VIEW_TYPE_NORMAL = 0;
     private static final int VIEW_TYPE_SMALL = 1;
 
+    private int largeItemHeight = 400;
+
+    private int smallItemHeight = 300;
+
 
     private Context context;
 
@@ -28,20 +33,30 @@ public class ShoppingPageRecyclerAdapter  extends RecyclerView.Adapter<RecyclerV
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        switch (viewType) {
-            case VIEW_TYPE_SMALL:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_recycling_card_small, parent, false);
-                return new NormalItemHolder(view);
-            case VIEW_TYPE_NORMAL:
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_page_recycler_card, parent, false);
-                return new LargeItemHolder(view);
+
+        // Set the height of the view here based on the position
+        if (viewType == 0) {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_page_recycler_card, parent, false);
+            ViewGroup.LayoutParams params = view.getLayoutParams();
+            params.height = largeItemHeight;
+            view.setLayoutParams(params);
+            return new LargeItemHolder(view);
+        } else {
+             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_recycling_card_small, parent, false);
+            ViewGroup.LayoutParams params = view.getLayoutParams();
+            params.height = smallItemHeight;
+            view.setLayoutParams(params);
+            return new NormalItemHolder(view);
         }
-        throw new IllegalStateException("Unknown viewType: " + viewType);
+
+
     }
+
 
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
 
     }
 

@@ -36,11 +36,11 @@ public class ShoppingFragment extends Fragment {
         shoppingViewLeft = view.findViewById(R.id.shopping_page_recycler);
 
 
-        int smallItemHeight = getResources().getDimensionPixelSize(R.dimen.small_item_height);
-        int largeItemHeight = getResources().getDimensionPixelSize(R.dimen.large_item_height);
-
-        CustomItemDecoration itemDecoration = new CustomItemDecoration(smallItemHeight, largeItemHeight);
-        shoppingViewLeft.addItemDecoration(itemDecoration);
+//        int smallItemHeight = getResources().getDimensionPixelSize(R.dimen.small_item_height);
+//        int largeItemHeight = getResources().getDimensionPixelSize(R.dimen.large_item_height);
+//
+//        CustomItemDecoration itemDecoration = new CustomItemDecoration(smallItemHeight, largeItemHeight);
+//        shoppingViewLeft.addItemDecoration(itemDecoration);
         shoppingViewLeft.setHasFixedSize(true);
 
 
