@@ -7,7 +7,7 @@
     tools:context=".EventsFragment">
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,11 +29,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     >
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="35dp"
-                        android:background="@drawable/login_button"/>
+
 
                     <TextView
                         android:id="@+id/home_txt"
@@ -45,12 +41,7 @@
                         android:fontFamily="@font/monserrat_bold"
                         android:layout_centerHorizontal="true"/>
 
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginRight="35dp"
-                        android:background="@drawable/nav_slider_btn"/>
+
 
                 </RelativeLayout>
             </RelativeLayout>
@@ -62,6 +53,7 @@
                 android:layout_height="match_parent"
                 android:layout_below="@id/top_section"
                 app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
                 >
 
 
@@ -70,7 +62,7 @@
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="30dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"/>
 
 
             </androidx.cardview.widget.CardView>

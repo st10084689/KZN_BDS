@@ -28,11 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             >
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:background="@drawable/login_button"/>
+
 
             <TextView
                 android:id="@+id/home_txt"
@@ -44,12 +40,7 @@
                 android:fontFamily="@font/monserrat_bold"
                 android:layout_centerHorizontal="true"/>
 
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="35dp"
-                android:background="@drawable/nav_slider_btn"/>
+
 
         </RelativeLayout>
     </RelativeLayout>

@@ -1,7 +1,10 @@
 package com.example.bds_kzn;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +15,8 @@ import android.view.ViewGroup;
 
 public class EventsFragment extends Fragment {
     private RecyclerView eventPageRecycler;
+
+    private CardView mainContentCard;
 
 
     public EventsFragment() {
@@ -34,5 +39,6 @@ public class EventsFragment extends Fragment {
         eventPageRecycler.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
         EventsPageRecyclerAdapter eventAdapter = new EventsPageRecyclerAdapter();
         eventPageRecycler.setAdapter(eventAdapter);
+
     }
 }

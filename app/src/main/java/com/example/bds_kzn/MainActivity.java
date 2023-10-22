@@ -1,21 +1,31 @@
 package com.example.bds_kzn;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.animation.ObjectAnimator;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView homeIcon,shoppingIcon,eventIcon,aboutIcon;
@@ -23,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
     private ImageView homeUnderLine, shoppingUnderline, eventUnderline, aboutUnderline,chosenUnderline;
 
     private TextView homeText,shoppingText, eventText, aboutText;
+
+    private ImageButton navSliderBtn;
+
+
+    private DrawerLayout drawerLayout;
+
+    private boolean isPressed ;
 
 
     private RelativeLayout homeBtn,shoppingBtn,eventsBtn,aboutBtn;
@@ -45,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
         eventsBtn = findViewById(R.id.event_relative);
         aboutBtn = findViewById(R.id.about_relative);
 
+//the drawerlayout...
+        drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
         //initialising the imageViews
         homeIcon = findViewById(R.id.home_icon);
         shoppingIcon = findViewById(R.id.shopping_icon);
@@ -64,7 +85,30 @@ public class MainActivity extends AppCompatActivity {
         aboutUnderline = findViewById(R.id.about_underline);
         chosenUnderline = homeUnderLine;
 
+        //initialising the nav slider button
+        navSliderBtn = findViewById(R.id.nav_slider_button);
 
+        TransitionDrawable transitionDrawable = (TransitionDrawable) getResources().getDrawable(R.drawable.nav_bar_transition_btn);
+        navSliderBtn.setBackground(transitionDrawable);
+        isPressed = false;
+        navSliderBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                    if (isPressed) {
+                        // If already pressed, transition back to normal state
+                        transitionDrawable.reverseTransition(300); // Reverse the transition
+                    } else {
+                        // If not pressed, transition to pressed state
+                        transitionDrawable.startTransition(300);
+                    }
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                } else {
+                    drawerLayout.openDrawer(GravityCompat.START);
+                }
+                    isPressed = !isPressed; // Toggle the state
+                }
+            });
 
         homeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -107,6 +151,22 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment(new AboutUsFragment());
             }
         });
+
+
+//          .setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (navSlider.getVisibility() == View.VISIBLE) {
+//                    Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.slide_out_left);
+//                    navSlider.startAnimation(animation);
+//                    navSlider.setVisibility(View.INVISIBLE);
+//                } else {
+//                    navSlider.setVisibility(View.VISIBLE);
+//                    Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.slide_in_left);
+//                    navSlider.startAnimation(animation);
+//                }
+//            }
+//        });
 
         // Load initial fragment and colors (HomeFragment)
         changeNavBarColors(R.drawable.home_icon_selected, homeIcon,homeText,homeUnderLine);

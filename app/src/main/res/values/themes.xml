@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.Bds_kzn" parent="Base.Theme.Bds_kzn" />
+    <style name="Theme.Bds_kzn.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.Bds_kzn.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Bds_kzn.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
