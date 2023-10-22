@@ -135,12 +135,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="8dp"
+                            android:inputType="text"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
                             android:layout_toRightOf="@id/NameSpinner"
                             android:background="@drawable/donation_option_background"
                             android:fontFamily="@font/montserrat_semi_bold"
                             android:hint="Name"
                             android:textAlignment="center"
-                            android:textSize="28sp" />
+                            android:textSize="20sp" />
                     </RelativeLayout>
 
                     <EditText
@@ -149,8 +152,11 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/nameRecycler"
                         android:layout_marginTop="30dp"
+                        android:inputType="text"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
                         android:hint="Surname"
-                        android:textSize="28sp"
+                        android:textSize="20sp"
                         android:textAlignment="center"
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:background="@drawable/donation_option_background"/>
@@ -185,8 +191,11 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/companyCheckBox"
                         android:layout_marginTop="30dp"
+                        android:inputType="text"
                         android:hint="Email"
-                        android:textSize="28sp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:textSize="20sp"
                         android:textAlignment="center"
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:background="@drawable/donation_option_background"/>
@@ -199,7 +208,10 @@
                         android:layout_below="@id/Email"
                         android:layout_marginTop="30dp"
                         android:hint="Leave a Comment"
-                        android:textSize="28sp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:inputType="text"
+                        android:textSize="20sp"
                         android:textAlignment="center"
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:background="@drawable/donation_option_background"/>
@@ -216,6 +228,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:button="@drawable/check_box_item"
+                            android:buttonTint="@color/orange"
                             android:gravity="center"
 
                             />
