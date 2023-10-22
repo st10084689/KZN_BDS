@@ -2,6 +2,7 @@ package com.example.bds_kzn;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class HomeFragment extends Fragment {
+
+    private static final String TAG = "HomeFragment";
 
     private RecyclerView eventRecycler;
     private RecyclerView shoppingRecycler;
@@ -83,7 +86,17 @@ public class HomeFragment extends Fragment {
                 }else if(motionEvent.getAction()== MotionEvent.ACTION_UP){
                     donationButton.startAnimation(scaleDown);
                 }
-                return true;
+
+                return false;
+            }
+        });
+
+        donationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: entered the donation");
+                Intent toClass = new Intent(getContext(), DonationActivity.class);
+                startActivity(toClass);
             }
         });
 
@@ -93,9 +106,4 @@ public class HomeFragment extends Fragment {
 
 
     }
-
-
-
-
-
 }
