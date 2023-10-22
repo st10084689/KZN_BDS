@@ -1,5 +1,6 @@
 package com.example.bds_kzn;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.view.GravityCompat;
@@ -101,14 +102,40 @@ public class MainActivity extends AppCompatActivity {
                         // If not pressed, transition to pressed state
                         transitionDrawable.startTransition(300);
                     }
-                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                    drawerLayout.closeDrawer(GravityCompat.START);
+                if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+                    drawerLayout.closeDrawer(GravityCompat.END);
                 } else {
-                    drawerLayout.openDrawer(GravityCompat.START);
+                    drawerLayout.openDrawer(GravityCompat.END);
                 }
                     isPressed = !isPressed; // Toggle the state
                 }
             });
+
+
+        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+                // Not used in this case
+            }
+
+            @Override
+            public void onDrawerOpened(@NonNull View drawerView) {
+                // Drawer is opened, you can handle any related actions here
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View drawerView) {
+                transitionDrawable.reverseTransition(300);
+                isPressed = !isPressed;
+
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                // Not used in this case
+            }
+        });
+
 
         homeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
