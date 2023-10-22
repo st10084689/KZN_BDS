@@ -16,7 +16,8 @@
             android:id="@+id/shopping_title"
             android:layout_width="match_parent"
             android:layout_height="110dp"
-            android:background="@drawable/event_place_holder_image"
+            android:scaleType="centerCrop"
+            android:background="@drawable/place_holder_shopping"
             android:layout_alignParentTop="true"/>
         <TextView
             android:id="@+id/statement_title"

@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                     if (isPressed) {
                         // If already pressed, transition back to normal state
-                        transitionDrawable.reverseTransition(300); // Reverse the transition
+                        transitionDrawable.reverseTransition(300); // Reverses the transition
                     } else {
                         // If not pressed, transition to pressed state
                         transitionDrawable.startTransition(300);
@@ -115,12 +116,12 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
             @Override
             public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-                // Not used in this case
+
             }
 
             @Override
             public void onDrawerOpened(@NonNull View drawerView) {
-                // Drawer is opened, you can handle any related actions here
+
             }
 
             @Override
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onDrawerStateChanged(int newState) {
-                // Not used in this case
+
             }
         });
 
@@ -179,23 +180,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-//          .setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (navSlider.getVisibility() == View.VISIBLE) {
-//                    Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.slide_out_left);
-//                    navSlider.startAnimation(animation);
-//                    navSlider.setVisibility(View.INVISIBLE);
-//                } else {
-//                    navSlider.setVisibility(View.VISIBLE);
-//                    Animation animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.slide_in_left);
-//                    navSlider.startAnimation(animation);
-//                }
-//            }
-//        });
-
-        // Load initial fragment and colors (HomeFragment)
         changeNavBarColors(R.drawable.home_icon_selected, homeIcon,homeText,homeUnderLine);
         loadFragment(new HomeFragment());
     }
@@ -210,6 +194,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.addToBackStack(null); // Optional, allows the user to navigate back
         fragmentTransaction.commit();
     }
+
+
 
     private void changeNavBarColors(int drawableValue, ImageView image,TextView text, ImageView underLine){
         homeIcon.setImageResource(R.drawable.home_icon);

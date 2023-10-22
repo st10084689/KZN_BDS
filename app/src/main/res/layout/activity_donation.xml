@@ -5,6 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DonationActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -99,6 +103,7 @@
             </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/donationButtonsRel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/heading_section"
@@ -159,37 +164,42 @@
             android:textSize="18sp"
             android:textColor="@color/grey"/>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <EditText
         android:id="@+id/customDonation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/or"
         android:layout_marginTop="15dp"
         android:hint="Enter Custom Amount"
+            android:inputType="number"
         android:textSize="18sp"
         android:textAlignment="center"
         android:fontFamily="@font/montserrat_semi_bold"
         android:background="@drawable/donation_option_background"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/continueButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/customDonation"
-            android:layout_marginTop="30dp"
-            android:textSize="18sp"
-            android:text="Continue"
-            android:textColor="@color/white"
-            android:textAlignment="center"
-            android:fontFamily="@font/montserrat_semi_bold"
-            android:background="@drawable/resource_continue"/>
+
 
     </RelativeLayout>
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/continueButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/donationButtonsRel"
+        android:layout_marginTop="30dp"
+        android:textSize="18sp"
+        android:text="Continue"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="25dp"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:fontFamily="@font/montserrat_semi_bold"
+        android:background="@drawable/resource_continue"/>
 
 </RelativeLayout>
 
 
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
