@@ -251,6 +251,16 @@ public class MainActivity extends AppCompatActivity {
 
         targetUnderline.startAnimation(animation);
     }
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            drawerLayout.closeDrawer(GravityCompat.END);
+        } else {
+            super.onBackPressed();
+        }
+
+
+    }
 
     }
 
