@@ -1,24 +1,34 @@
 package com.example.bds_kzn;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class HomeFragment extends Fragment {
 
     private RecyclerView eventRecycler;
     private RecyclerView shoppingRecycler;
+
+    private RelativeLayout mainContentBackground,donationBackgroundButton;
+
+
 
     Button donationButton;
 
@@ -52,6 +62,10 @@ public class HomeFragment extends Fragment {
 
         shoppingRecycler.setAdapter(shoppingAdapter);
 
+//        //initialising the relative layout that contains the main context such as the recyclerviews
+//        donationBackgroundButton = view.findViewById(R.id.donate_section_background);
+
+
         //initializing the buttons and the button and animations
 
         donationButton = view.findViewById(R.id.donation_button_background);
@@ -72,6 +86,16 @@ public class HomeFragment extends Fragment {
                 return true;
             }
         });
+
+
+
+
+
+
     }
+
+
+
+
 
 }

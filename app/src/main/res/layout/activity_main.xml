@@ -1,22 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
+    tools:openDrawer="left"
     tools:context=".MainActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="-30dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/nav_bar">
     <FrameLayout
         android:id="@+id/content_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="-30dp"
-        android:layout_above="@id/nav_bar">
-
+        android:layout_marginBottom="100dp"
+        >
 
     </FrameLayout>
 
 
+        <RelativeLayout
+            android:id="@+id/menu_relative"
+            android:layout_width="match_parent"
+            android:layout_height="232dp"
+            android:layout_alignParentTop="true"
+
+            >
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/login_button"/>
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/nav_slider_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="35dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/nav_bar_transition_btn"/>
+
+        </RelativeLayout>
+</RelativeLayout>
+</androidx.core.widget.NestedScrollView>
 
     <RelativeLayout
         android:id="@+id/nav_bar"
@@ -182,4 +221,13 @@
         </LinearLayout>
 
     </RelativeLayout>
-</RelativeLayout>
+    </RelativeLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:visibility="invisible"
+        app:menu="@menu/activity_main_drawer" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
