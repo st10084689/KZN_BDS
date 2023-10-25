@@ -128,12 +128,12 @@
                             android:fontFamily="@font/monserrat_bold"
                             android:textColor="@color/black"
                             android:spinnerMode="dropdown"
-                            android:layout_height="61dp" />
+                            android:layout_height="51dp" />
 
                         <EditText
                             android:id="@+id/Name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
                             android:layout_marginLeft="8dp"
                             android:inputType="text"
                             android:paddingLeft="5dp"
@@ -149,7 +149,7 @@
                     <EditText
                         android:id="@+id/surname"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_below="@id/nameRecycler"
                         android:layout_marginTop="30dp"
                         android:inputType="text"
@@ -188,7 +188,7 @@
                     <EditText
                         android:id="@+id/Email"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_below="@id/companyCheckBox"
                         android:layout_marginTop="30dp"
                         android:inputType="text"
@@ -204,7 +204,7 @@
                     <EditText
                         android:id="@+id/comment"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_below="@id/Email"
                         android:layout_marginTop="30dp"
                         android:hint="Leave a Comment"

@@ -34,25 +34,11 @@ public class ShoppingFragment extends Fragment {
 
     public void init(View view){
         shoppingViewLeft = view.findViewById(R.id.shopping_page_recycler);
-
-
-//        int smallItemHeight = getResources().getDimensionPixelSize(R.dimen.small_item_height);
-//        int largeItemHeight = getResources().getDimensionPixelSize(R.dimen.large_item_height);
-//
-//        CustomItemDecoration itemDecoration = new CustomItemDecoration(smallItemHeight, largeItemHeight);
-//        shoppingViewLeft.addItemDecoration(itemDecoration);
         shoppingViewLeft.setHasFixedSize(true);
-
-
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
-
         shoppingViewLeft.setLayoutManager(layoutManager);
         ShoppingPageRecyclerAdapter shoppingAdapterOne = new ShoppingPageRecyclerAdapter(this.getContext());
         shoppingViewLeft.setAdapter(shoppingAdapterOne);
-
-
-
-
     }
 }

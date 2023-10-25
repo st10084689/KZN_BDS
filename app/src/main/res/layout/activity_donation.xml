@@ -31,6 +31,7 @@
                 android:layout_centerVertical="true"
                 >
                 <RelativeLayout
+                    android:id="@+id/backSpaceButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="35dp"
@@ -114,7 +115,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/tenDonation"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:text="R10"
                 android:textSize="28sp"
                 android:fontFamily="@font/montserrat_semi_bold"
@@ -123,7 +124,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/FiftyDonation"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/tenDonation"
                 android:layout_marginTop="30dp"
                 android:text="R50"
@@ -134,7 +135,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/HundredDonation"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/FiftyDonation"
                 android:textSize="28sp"
                 android:fontFamily="@font/montserrat_semi_bold"
@@ -145,7 +146,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/TwoHundredDonation"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/HundredDonation"
                 android:layout_marginTop="30dp"
                 android:text="R200"
@@ -167,7 +168,7 @@
         <EditText
         android:id="@+id/customDonation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@id/or"
         android:layout_marginTop="15dp"
         android:hint="Enter Custom Amount"
@@ -183,7 +184,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/continueButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@id/donationButtonsRel"
         android:layout_marginTop="30dp"
         android:textSize="18sp"

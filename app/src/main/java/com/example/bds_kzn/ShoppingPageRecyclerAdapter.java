@@ -20,7 +20,7 @@ public class ShoppingPageRecyclerAdapter  extends RecyclerView.Adapter<RecyclerV
 
     private int largeItemHeight = 400;
 
-    private int smallItemHeight = 300;
+    private int smallItemHeight = 350;
 
 
     private Context context;
@@ -37,18 +37,27 @@ public class ShoppingPageRecyclerAdapter  extends RecyclerView.Adapter<RecyclerV
         // Set the height of the view here based on the position
         if (viewType == 0) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_page_recycler_card, parent, false);
-            ViewGroup.LayoutParams params = view.getLayoutParams();
-            params.height = largeItemHeight;
-            view.setLayoutParams(params);
+//            ViewGroup.LayoutParams params = view.getLayoutParams();
+//            params.height = largeItemHeight;
+//            view.setLayoutParams(params);
             return new LargeItemHolder(view);
         } else {
              view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_recycling_card_small, parent, false);
-            ViewGroup.LayoutParams params = view.getLayoutParams();
-            params.height = smallItemHeight;
-            view.setLayoutParams(params);
+//            ViewGroup.LayoutParams params = view.getLayoutParams();
+//            params.height = smallItemHeight;
+//            view.setLayoutParams(params);
             return new NormalItemHolder(view);
         }
 
+
+    }
+
+    private int convertPixelsToDp(int px) {
+        Log.d(TAG, "convertPixelsToDp: "+ px);
+        Log.d(TAG, "convertPixelsToDp: + "+ context.getResources().getDisplayMetrics().density);
+        float density = context.getResources().getDisplayMetrics().density;
+        Log.d(TAG, "convertPixelsToDp: "+ Math.round((px / density)));
+        return Math.round(px / density);
 
     }
 
@@ -79,9 +88,9 @@ public class ShoppingPageRecyclerAdapter  extends RecyclerView.Adapter<RecyclerV
 
         public NormalItemHolder(@NonNull View itemView) {
             super(itemView);
-            shoppingImage = itemView.findViewById(R.id.statement_badge);
-            shoppingTitle = itemView.findViewById(R.id.statement_title);
-            shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
+//            shoppingImage = itemView.findViewById(R.id.statement_badge);
+//            shoppingTitle = itemView.findViewById(R.id.statement_title);
+//            shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
         }
     }
 
@@ -93,9 +102,9 @@ public class ShoppingPageRecyclerAdapter  extends RecyclerView.Adapter<RecyclerV
 
         public LargeItemHolder(@NonNull View itemView) {
             super(itemView);
-            shoppingImage = itemView.findViewById(R.id.statement_badge);
-            shoppingTitle = itemView.findViewById(R.id.statement_title);
-            shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
+//            shoppingImage = itemView.findViewById(R.id.statement_badge);
+//            shoppingTitle = itemView.findViewById(R.id.statement_title);
+//            shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
         }
     }
 
