@@ -1,5 +1,6 @@
 package com.example.bds_kzn;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +10,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRecyclerAdapter.ItemHolder> {
 
     private static final String TAG = "eventsRecyclerAdapter";
+
+    private List<Event> events = new ArrayList<>();
+
+    public static String BASE_URL = "https://testingsitewil.azurewebsites.net/";
+
+    public EventsPageRecyclerAdapter(List<Event> _events) {
+        events = _events;
+    }
 
     @NonNull
     @Override
@@ -23,11 +37,30 @@ public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRe
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
 
+            Event model = events.get(position);
+
+            holder.eventTitle.setText(model.getTitle());
+        Log.d(TAG, "onBindViewHolder: event Title" + model.getTitle());
+
+            holder.eventDescripion.setText(model.getDescription());
+
+
+
+            String imageUrl = BASE_URL + model.getImages();
+            Glide.with(holder.eventImage)
+                    .load(imageUrl)
+                    .centerCrop()
+                    .into(holder.eventImage);
+
+        Log.d(TAG, "onBindViewHolder: "+ imageUrl);
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+
+        Log.d(TAG, "getItemCount: " + events.size());
+     return  events.size();
+
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder{
@@ -37,9 +70,9 @@ public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRe
         private ImageView eventImage;
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
-            eventImage = itemView.findViewById(R.id.statement_badge);
-            eventTitle = itemView.findViewById(R.id.statement_title);
-            eventDescripion = itemView.findViewById(R.id.shopping_description_txt);
+            eventTitle  = itemView.findViewById(R.id.event_title);
+            eventDescripion = itemView.findViewById(R.id.event_description_txt);
+            eventImage  = itemView.findViewById(R.id.event_image);
 
 
         }
