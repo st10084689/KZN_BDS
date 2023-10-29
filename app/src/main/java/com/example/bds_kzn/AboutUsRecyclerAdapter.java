@@ -70,11 +70,9 @@ public class AboutUsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 } else if (typeRecycler == MEMBER_REC) {
                         MemberItemHolder memberHolder = (MemberItemHolder) holder; // Cast to MemberItemHolder
                         Statement statement = Statements.get(position);
-
                         // Set the title and label of the statement.
                         memberHolder.memberName.setText(statement.getTitle());
                         memberHolder.memberDescription.setText(statement.getLabel());
-
                         // Load the image into the ImageView.
                         Glide.with(memberHolder.memberImage.getContext())
                                 .load(statement.getImage())
@@ -90,9 +88,7 @@ public class AboutUsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 }
         }
 
-        public void RecyclerType(int _typeRecycler){
-                typeRecycler = _typeRecycler;
-        }
+        public void RecyclerType(int _typeRecycler){typeRecycler = _typeRecycler;}
 
 
         @Override

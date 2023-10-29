@@ -5,6 +5,7 @@
     android:layout_margin="5dp"
     app:cardCornerRadius="10dp"
     android:layout_gravity="center_vertical"
+    android:id="@+id/CardLayoutItem"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 

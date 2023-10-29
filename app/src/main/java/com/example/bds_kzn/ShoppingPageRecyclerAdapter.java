@@ -1,6 +1,7 @@
 package com.example.bds_kzn;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -10,103 +11,118 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ShoppingPageRecyclerAdapter  extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+import com.bumptech.glide.Glide;
 
-    private static final String TAG = "shoppingRecyclerPageAdapter";
+import java.util.ArrayList;
+import java.util.List;
+
+public class ShoppingPageRecyclerAdapter extends RecyclerView.Adapter<ShoppingPageRecyclerAdapter.ItemHolder> {
+
+    private static final String TAG = "shoppingRecyclerAdapter";
     private static final int VIEW_TYPE_NORMAL = 0;
     private static final int VIEW_TYPE_SMALL = 1;
 
-    private int largeItemHeight = 400;
+    List<Shopping> shop = new ArrayList<>();
 
+    private int largeItemHeight = 400;
     private int smallItemHeight = 350;
 
+    private String BASE_URL = "https://testingsitewil.azurewebsites.net/";
 
     private Context context;
 
-    public ShoppingPageRecyclerAdapter(Context context) {
-        this.context = context;
+    public ShoppingPageRecyclerAdapter(List<Shopping> _shop) {
+        shop = _shop;
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-
-        // Set the height of the view here based on the position
         if (viewType == 0) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_page_recycler_card, parent, false);
-//            ViewGroup.LayoutParams params = view.getLayoutParams();
-//            params.height = largeItemHeight;
-//            view.setLayoutParams(params);
-            return new LargeItemHolder(view);
-        } else {
-             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_recycling_card_small, parent, false);
-//            ViewGroup.LayoutParams params = view.getLayoutParams();
-//            params.height = smallItemHeight;
-//            view.setLayoutParams(params);
-            return new NormalItemHolder(view);
+            return new ItemHolder(view);
         }
-
-
-    }
-
-    private int convertPixelsToDp(int px) {
-        Log.d(TAG, "convertPixelsToDp: "+ px);
-        Log.d(TAG, "convertPixelsToDp: + "+ context.getResources().getDisplayMetrics().density);
-        float density = context.getResources().getDisplayMetrics().density;
-        Log.d(TAG, "convertPixelsToDp: "+ Math.round((px / density)));
-        return Math.round(px / density);
+            else{
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_recycling_card_small, parent, false);
+            return new ItemHolder(view);
+            }
 
     }
+
+
 
 
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
+        Shopping model = shop.get(position);
 
+        holder.shoppingTitle.setText(model.getTitle());
+        Log.d(TAG, "onBindViewHolder: shopping Title" + model.getTitle());
+
+        holder.shoppingDescripion.setText(model.getDescription());
+
+        holder.shoppingCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toShoppingDetails = new Intent(view.getContext(), shopping_details.class);
+                toShoppingDetails.putExtra("Position",position);
+                view.getContext().startActivity(toShoppingDetails);
+            }
+        });
+
+        String imageUrl = BASE_URL + model.getImages();
+        Glide.with(holder.shoppingImage)
+                .load(imageUrl)
+                .centerCrop()
+                .into(holder.shoppingImage);
+
+
+
+        Log.d(TAG, "onBindViewHolder: "+ imageUrl);
 
     }
+
+
 
     @Override
     public int getItemViewType(int position) {
         return position % 3 == 0 ? VIEW_TYPE_SMALL : VIEW_TYPE_NORMAL;
     }
 
+//    private int convertPixelsToDp(int px) {
+//        Log.d(TAG, "convertPixelsToDp: "+ px);
+//        Log.d(TAG, "convertPixelsToDp: + "+ context.getResources().getDisplayMetrics().density);
+//        float density = context.getResources().getDisplayMetrics().density;
+//        Log.d(TAG, "convertPixelsToDp: "+ Math.round((px / density)));
+//        return Math.round(px / density);
+//
+//    }
+
 
     @Override
     public int getItemCount() {
-        return 12;
+        return shop.size();
     }
 
-    public class NormalItemHolder extends RecyclerView.ViewHolder {
+    public class ItemHolder extends RecyclerView.ViewHolder {
 
+        private CardView shoppingCard;
         private TextView shoppingTitle;
         private TextView shoppingDescripion;
         private ImageView shoppingImage;
 
-        public NormalItemHolder(@NonNull View itemView) {
+        public ItemHolder(@NonNull View itemView) {
             super(itemView);
-//            shoppingImage = itemView.findViewById(R.id.statement_badge);
-//            shoppingTitle = itemView.findViewById(R.id.statement_title);
-//            shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
+
+            shoppingCard = itemView.findViewById(R.id.CardLayoutItem);
+            shoppingImage = itemView.findViewById(R.id.shopping_image);
+            shoppingTitle = itemView.findViewById(R.id.shopping_title);
+            shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
         }
     }
-
-    public class LargeItemHolder extends RecyclerView.ViewHolder {
-
-        private TextView shoppingTitle;
-        private TextView shoppingDescripion;
-        private ImageView shoppingImage;
-
-        public LargeItemHolder(@NonNull View itemView) {
-            super(itemView);
-//            shoppingImage = itemView.findViewById(R.id.statement_badge);
-//            shoppingTitle = itemView.findViewById(R.id.statement_title);
-//            shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
-        }
-    }
-
-
 }
