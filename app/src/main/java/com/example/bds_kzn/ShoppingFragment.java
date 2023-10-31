@@ -23,8 +23,6 @@ public class ShoppingFragment extends Fragment {
 
     private RecyclerView shoppingViewLeft;
 
-    private List<Shopping> shopping;
-
 
     public ShoppingFragment() {
         // Required empty public constructor
@@ -60,8 +58,8 @@ public class ShoppingFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Shopping>> call, Response<List<Shopping>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    List<Shopping> shopping = response.body();
-                    ShoppingPageRecyclerAdapter shoppingAdapter = new ShoppingPageRecyclerAdapter(shopping);
+                    Utility.setShoppingItems( response.body());
+                    ShoppingPageRecyclerAdapter shoppingAdapter = new ShoppingPageRecyclerAdapter(Utility.getShoppingItems());
                     shoppingViewLeft.setAdapter(shoppingAdapter);
                 } else {
                     // Handle unsuccessful response

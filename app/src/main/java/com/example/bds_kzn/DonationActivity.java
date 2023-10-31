@@ -11,12 +11,17 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
 
 public class DonationActivity extends AppCompatActivity {
 
     private AppCompatButton tenDonation, fiftyDonation, hundredDonation, twoHundredDonation, continueButton, selectedButton;
 
     Animation scaleUp, scaleDown;
+
+    private RelativeLayout onBackButton;
+
+    private int buttonType=0;
 
     private static final String TAG = "DonationActivity";
     @Override
@@ -27,9 +32,9 @@ public class DonationActivity extends AppCompatActivity {
         init();
     }
 
-    public void init(){
+    public void init() {
 
-        scaleUp = AnimationUtils.loadAnimation(this,R.anim.scale_up);
+        scaleUp = AnimationUtils.loadAnimation(this, R.anim.scale_up);
         scaleDown = AnimationUtils.loadAnimation(this, R.anim.scale_down);
 
 
@@ -38,6 +43,14 @@ public class DonationActivity extends AppCompatActivity {
         hundredDonation = findViewById(R.id.HundredDonation);
         twoHundredDonation = findViewById(R.id.TwoHundredDonation);
         continueButton = findViewById(R.id.continueButton);
+        onBackButton = findViewById(R.id.on_back_button);
+
+        onBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         tenDonation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +84,7 @@ public class DonationActivity extends AppCompatActivity {
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 if(motionEvent.getAction()== MotionEvent.ACTION_DOWN){
                     continueButton.startAnimation(scaleUp);
+
                 }else if(motionEvent.getAction()== MotionEvent.ACTION_UP){
                     continueButton.startAnimation(scaleDown);
                 }
@@ -78,13 +92,23 @@ public class DonationActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        continueButton.setOnClickListener(new View.OnClickListener() {
+        scaleDown.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onClick: entered the donation");
-                Intent toClass = new Intent(DonationActivity.this, DonationPersonalInfo.class);
-                startActivity(toClass);
+            public void onAnimationStart(Animation animation) {
+                // This method is called when the animation starts.
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+
+                    Intent toClass = new Intent(DonationActivity.this, DonationPersonalInfo.class);
+                    startActivity(toClass);
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                // This method is called if the animation repeats.
             }
         });
     }
@@ -102,4 +126,5 @@ public class DonationActivity extends AppCompatActivity {
 
         selectedButton = clickedButton;
     }
+
 }

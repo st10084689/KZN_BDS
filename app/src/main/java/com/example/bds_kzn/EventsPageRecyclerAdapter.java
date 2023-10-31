@@ -21,7 +21,6 @@ public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRe
 
     private List<Event> events = new ArrayList<>();
 
-    public static String BASE_URL = "https://testingsitewil.azurewebsites.net/";
 
     public EventsPageRecyclerAdapter(List<Event> _events) {
         events = _events;
@@ -46,7 +45,7 @@ public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRe
 
 
 
-            String imageUrl = BASE_URL + model.getImages();
+            String imageUrl = Utility.getBaseUrl() + model.getImages();
             Glide.with(holder.eventImage)
                     .load(imageUrl)
                     .centerCrop()

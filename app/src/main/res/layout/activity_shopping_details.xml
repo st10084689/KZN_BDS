@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".shopping_details">
 
-
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <RelativeLayout
         android:id="@+id/top_section"
         android:layout_width="match_parent"
@@ -25,27 +30,30 @@
             android:layout_centerVertical="true"
             >
 
-            <RelativeLayout
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:cardCornerRadius="50dp"
                 android:layout_marginLeft="35dp"
-                android:background="@drawable/circle">
+              >
+                <RelativeLayout
+                    android:id="@+id/on_back_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground">
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:background="@drawable/baseline_arrow_back_24"/>
 
+                    <View
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/baseline_arrow_back_24" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
 
-            </RelativeLayout>
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="35dp"
-                android:background="@drawable/nav_slider_btn"/>
 
         </RelativeLayout>
     </RelativeLayout>
@@ -57,15 +65,20 @@
         android:layout_below="@id/top_section"
         app:cardCornerRadius="24dp"
         app:cardElevation="0dp"
-        android:layout_marginTop="-15dp"
-        >
+        android:layout_marginTop="-15dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/TopEnd"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-
                 <TextView
                     android:id="@+id/shoppingDetailsTitle"
                     android:layout_width="wrap_content"
@@ -77,86 +90,83 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="32dp"
                     />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/shoppingDetailsDescription"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/shoppingDescription"
-                    android:layout_below="@id/shoppingDetailsTitle"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto_regular"
                     android:textSize="18sp"/>
+            </RelativeLayout>
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/imageViewPager"
-                    android:layout_below="@id/shoppingDetailsDescription"
+
+
+                <ImageView
+                    android:id="@+id/imageShopping"
                     android:layout_width="wrap_content"
-                    android:layout_height="320dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corner"/>
+
+        </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/bottomTxtBar"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/price_bottom_bar">
 
                 <RelativeLayout
-                    android:id="@+id/bottomTxtBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_alignParentBottom="true"
-                    android:background="@drawable/price_bottom_bar">
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="61dp">
 
-                    <RelativeLayout
+                    <TextView
+                        android:id="@+id/priceLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="61dp"
-
-                        >
-                        <TextView
-                            android:id="@+id/priceLabel"
-                            android:layout_marginTop="20dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_meduim"
-                            android:textColor="@color/white"
-                            android:textSize="11sp"
-                            android:text="price"/>
-                        <TextView
-                            android:id="@+id/price"
-                            android:layout_below="@id/priceLabel"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/orange"
-                            android:textSize="18sp"
-                            android:text="R0.00"
-                            android:fontFamily="@font/roboto_meduim"
-                            />
-
-
-                    </RelativeLayout>
-                    
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:layout_width="100dp"
-                        android:layout_height="45dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginRight="24dp"
-                        android:text="Buy"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/roboto_meduim"
+                        android:text="price"
                         android:textColor="@color/white"
-                        android:background="@drawable/price_button"
-                        ></androidx.appcompat.widget.AppCompatButton>
+                        android:textSize="11sp" />
 
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/priceLabel"
+                        android:fontFamily="@font/roboto_meduim"
+                        android:text="R0.00"
+                        android:textColor="@color/orange"
+                        android:textSize="18sp" />
 
 
                 </RelativeLayout>
 
-
-
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="100dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:background="@drawable/price_button"
+                    android:text="Buy"
+                    android:textColor="@color/white"/>
             </RelativeLayout>
-
-
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
 </RelativeLayout>

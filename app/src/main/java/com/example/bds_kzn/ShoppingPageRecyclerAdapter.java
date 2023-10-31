@@ -30,7 +30,6 @@ public class ShoppingPageRecyclerAdapter extends RecyclerView.Adapter<ShoppingPa
     private int largeItemHeight = 400;
     private int smallItemHeight = 350;
 
-    private String BASE_URL = "https://testingsitewil.azurewebsites.net/";
 
     private Context context;
 
@@ -46,10 +45,10 @@ public class ShoppingPageRecyclerAdapter extends RecyclerView.Adapter<ShoppingPa
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_page_recycler_card, parent, false);
             return new ItemHolder(view);
         }
-            else{
-                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_recycling_card_small, parent, false);
+        else{
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shopping_recycling_card_small, parent, false);
             return new ItemHolder(view);
-            }
+        }
 
     }
 
@@ -63,8 +62,10 @@ public class ShoppingPageRecyclerAdapter extends RecyclerView.Adapter<ShoppingPa
 
         holder.shoppingTitle.setText(model.getTitle());
         Log.d(TAG, "onBindViewHolder: shopping Title" + model.getTitle());
-
-        holder.shoppingDescripion.setText(model.getDescription());
+        double price = model.getPrice();
+        String priceAsString = "R" + price;
+        holder.shoppingPrice.setText(priceAsString);
+        Log.d(TAG, "onBindViewHolder: "+model.getPrice());
 
         holder.shoppingCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +76,7 @@ public class ShoppingPageRecyclerAdapter extends RecyclerView.Adapter<ShoppingPa
             }
         });
 
-        String imageUrl = BASE_URL + model.getImages();
+        String imageUrl = Utility.getBaseUrl() + model.getImages();
         Glide.with(holder.shoppingImage)
                 .load(imageUrl)
                 .centerCrop()
@@ -113,7 +114,7 @@ public class ShoppingPageRecyclerAdapter extends RecyclerView.Adapter<ShoppingPa
 
         private CardView shoppingCard;
         private TextView shoppingTitle;
-        private TextView shoppingDescripion;
+        private TextView shoppingPrice;
         private ImageView shoppingImage;
 
         public ItemHolder(@NonNull View itemView) {
@@ -122,7 +123,7 @@ public class ShoppingPageRecyclerAdapter extends RecyclerView.Adapter<ShoppingPa
             shoppingCard = itemView.findViewById(R.id.CardLayoutItem);
             shoppingImage = itemView.findViewById(R.id.shopping_image);
             shoppingTitle = itemView.findViewById(R.id.shopping_title);
-            shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
+            shoppingPrice = itemView.findViewById(R.id.shopping_description_txt);
         }
     }
 }

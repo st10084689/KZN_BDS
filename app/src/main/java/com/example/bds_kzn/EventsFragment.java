@@ -34,10 +34,8 @@ public class EventsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
-        GetData();
         init(view);
         return view;
     }
@@ -46,31 +44,9 @@ public class EventsFragment extends Fragment {
         //initializing the recycler
         eventPageRecycler = view.findViewById(R.id.event_page_recycler);
 
+        EventsPageRecyclerAdapter eventAdapter = new EventsPageRecyclerAdapter(Utility.getEventItems());
+        eventPageRecycler.setAdapter(eventAdapter);
         eventPageRecycler.setHasFixedSize(true);
         eventPageRecycler.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false));
-    }
-
-    public void GetData(){
-        ApiService apiService = new ApiService();
-
-        Call<List<Event>> call = apiService.getEvents();
-
-        call.enqueue(new Callback<List<Event>>() {
-            @Override
-            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    List<Event> events = response.body();
-                    EventsPageRecyclerAdapter eventAdapter = new EventsPageRecyclerAdapter(events);
-                    eventPageRecycler.setAdapter(eventAdapter);
-                } else {
-                    // Handle unsuccessful response
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Event>> call, Throwable t) {
-                // Handle network failure
-            }
-        });
     }
 }

@@ -28,21 +28,30 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 >
-                <RelativeLayout
+
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:cardCornerRadius="50dp"
                     android:layout_marginLeft="35dp"
-                    android:background="@drawable/circle">
+                    >
+                <RelativeLayout
+                    android:id="@+id/on_back_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground">
 
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+
+                    <View
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_centerInParent="true"
-                        android:background="@drawable/baseline_arrow_back_24"/>
-
-
+                        android:background="@drawable/baseline_arrow_back_24" />
                 </RelativeLayout>
-
+                </androidx.cardview.widget.CardView>
 
 
 
@@ -103,6 +112,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/donationInfoRel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/heading_section"
@@ -274,22 +284,27 @@
 
                     </RelativeLayout>
 
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/donateButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/termsCheckBox"
-                        android:layout_marginTop="30dp"
-                        android:textSize="18sp"
-                        android:text="Continue"
-                        android:textColor="@color/white"
-                        android:textAlignment="center"
-                        android:fontFamily="@font/montserrat_semi_bold"
-                        android:background="@drawable/resource_continue"
-                        android:layout_marginBottom="15dp"/>
+
 
 
                 </RelativeLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/donateButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/donationInfoRel"
+                    android:layout_marginTop="30dp"
+                    android:textSize="18sp"
+                    android:text="Continue"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:background="@drawable/resource_continue"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                   />
 
 
             </RelativeLayout>

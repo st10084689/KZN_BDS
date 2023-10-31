@@ -30,21 +30,28 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 >
-                <RelativeLayout
-                    android:id="@+id/backSpaceButton"
+                <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:cardCornerRadius="50dp"
                     android:layout_marginLeft="35dp"
-                    android:background="@drawable/circle">
+                    >
+                    <RelativeLayout
+                        android:id="@+id/on_back_button"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="?attr/selectableItemBackground">
 
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/baseline_arrow_back_24"/>
 
-
-                </RelativeLayout>
+                        <View
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/baseline_arrow_back_24" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
 
 
 
