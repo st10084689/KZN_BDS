@@ -41,7 +41,29 @@ public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRe
             holder.eventTitle.setText(model.getTitle());
         Log.d(TAG, "onBindViewHolder: event Title" + model.getTitle());
 
-            holder.eventDescripion.setText(model.getDescription());
+        String originalDescription = model.getDescription();
+        String[] words = originalDescription.split("\\s+");
+
+        StringBuilder truncatedDescription = new StringBuilder();
+        int wordCount = 0;
+        for (String word : words) {
+            if (wordCount < 5) {
+                truncatedDescription.append(word).append(" ");
+                wordCount++;
+            } else {
+                break;
+            }
+        }
+
+
+        String finalDescription = truncatedDescription.toString().trim();
+
+
+        if (wordCount < words.length) {
+            finalDescription += "...";
+        }
+
+            holder.eventDescripion.setText(finalDescription);
 
 
 

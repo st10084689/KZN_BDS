@@ -41,9 +41,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:textAlignment="center"
+                android:textAlignment="gravity"
                 android:fontFamily="@font/roboto_regular"
-                android:gravity="center"
+                android:gravity="left"
                 android:textSize="18sp"
                 android:text="@string/description"/>
         </RelativeLayout>
