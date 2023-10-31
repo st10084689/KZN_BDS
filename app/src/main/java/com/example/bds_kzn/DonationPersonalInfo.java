@@ -11,8 +11,12 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class DonationPersonalInfo extends AppCompatActivity {
@@ -20,7 +24,13 @@ private TextView termsTxt;
 
 Animation scaleUp, scaleDown;
 
+private CheckBox IsDonationAnon;
+
 private AppCompatButton donateButton;
+
+private EditText username, surname, email;
+
+private Spinner title;
 
 private RelativeLayout onBackButton;
     @Override
@@ -31,10 +41,29 @@ private RelativeLayout onBackButton;
     }
 
     public void init(){
-
         donateButton = findViewById(R.id.donateButton);
         onBackButton = findViewById(R.id.on_back_button);
         termsTxt = findViewById(R.id.termsTxt);
+
+        IsDonationAnon = findViewById(R.id.IsAnonymousCheckBox);
+
+        title = findViewById(R.id.NameSpinner);
+        username = findViewById(R.id.Name);
+        surname = findViewById(R.id.surname);
+        email = findViewById(R.id.Email);
+
+
+
+
+        IsDonationAnon.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                 title.setVisibility(!isChecked ? View.VISIBLE: View.GONE);
+                 username.setVisibility(!isChecked ? View.VISIBLE: View.GONE);
+                 surname.setVisibility(!isChecked ? View.VISIBLE: View.GONE);
+                 email.setVisibility(!isChecked ? View.VISIBLE: View.GONE);
+            }
+        });
 
         termsTxt.setOnClickListener(new View.OnClickListener() {
             @Override

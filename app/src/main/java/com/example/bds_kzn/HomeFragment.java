@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,6 +39,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView eventsRecycler;
     private RecyclerView shoppingRecycler;
 
+    private ImageView eventsError, shoppingError;
+
     private List<Event> sortedEventList;
 
     private RelativeLayout mainContentBackground, donationBackgroundButton;
@@ -47,6 +51,8 @@ public class HomeFragment extends Fragment {
     TextView eventButton, shoppingButton;
 
     Animation scaleUp, scaleDown;
+
+    private ProgressBar eventsProg, shoppingProg;
 
 
     @Override
@@ -60,6 +66,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void init(View view) {
+
+        Utility util = new Utility();
         //initializing the event recycler
         eventsRecycler = view.findViewById(R.id.events_recycler);
 
@@ -72,11 +80,19 @@ public class HomeFragment extends Fragment {
 
         shoppingRecycler.setHasFixedSize(true);
         shoppingRecycler.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false));
+        shoppingProg = view.findViewById(R.id.loading_progress_shopping);
+        eventsProg = view.findViewById(R.id.loading_progress_events);
+        eventsProg.setVisibility(View.VISIBLE);
+        shoppingProg.setVisibility(View.VISIBLE);
 //        //initialising the relative layout that contains the main context such as the recyclerviews
 //        donationBackgroundButton = view.findViewById(R.id.donate_section_background);
 
 
         //initializing the buttons and the button and animations
+
+         eventsError = view.findViewById(R.id.eventsError);
+        shoppingError = view.findViewById(R.id.shoppingError);
+
 
         donationButton = view.findViewById(R.id.donation_button_background);
         eventButton = view.findViewById(R.id.event_see_all_txt);
@@ -155,6 +171,7 @@ public class HomeFragment extends Fragment {
                     Utility.setShoppingItems( response.body());
                     shoppingRecyclerAdapter shoppingAdapter = new shoppingRecyclerAdapter(Utility.getShoppingItems());
                     shoppingRecycler.setAdapter(shoppingAdapter);
+                    shoppingProg.setVisibility(View.GONE);
 
                 } else {
                     // Handle unsuccessful response
@@ -163,7 +180,8 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Shopping>> call, Throwable t) {
-                // Handle network failure
+                shoppingError.setVisibility(View.VISIBLE);
+                shoppingProg.setVisibility(View.GONE);
             }
         });
     }
@@ -180,6 +198,7 @@ public class HomeFragment extends Fragment {
                     sortedEventList = Utility.getEventItems();
                     EventsPageRecyclerAdapter EventAdapter = new EventsPageRecyclerAdapter(sortedEventList);
                     eventsRecycler.setAdapter(EventAdapter);
+                    eventsProg.setVisibility(View.GONE);
 
 //                    sortedEventList = sortByDateTime(Utility.getEventItems());
 //                    sortedEventList = GetFirstFive(sortedEventList);
@@ -192,6 +211,8 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<List<Event>> call, Throwable t) {
                 // Handle network failure
                 Log.d(TAG, "onFailure: + failed");
+                eventsError.setVisibility(View.VISIBLE);
+                eventsProg.setVisibility(View.GONE);
             }
         });
     }

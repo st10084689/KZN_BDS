@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import java.util.List;
 
@@ -22,6 +24,10 @@ import retrofit2.Response;
 public class ShoppingFragment extends Fragment {
 
     private RecyclerView shoppingViewLeft;
+
+    private ImageView shoppingError;
+
+    private ProgressBar shoppingProg;
 
 
     public ShoppingFragment() {
@@ -34,12 +40,19 @@ public class ShoppingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_shopping, container, false);
-        GetData();
+
         init(view);
+        loadShoppingRecycler();
         return(view);
     }
 
     public void init(View view){
+        shoppingProg = view.findViewById(R.id.loading_progress_shopping);
+        shoppingError= view.findViewById(R.id.shoppingError);
+
+        shoppingProg.setVisibility(View.VISIBLE);
+                shoppingError.setVisibility(View.GONE);
+
         shoppingViewLeft = view.findViewById(R.id.shopping_page_recycler);
         shoppingViewLeft.setHasFixedSize(true);
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
@@ -47,6 +60,17 @@ public class ShoppingFragment extends Fragment {
         shoppingViewLeft.setLayoutManager(layoutManager);
 
     }
+
+    public void loadShoppingRecycler(){
+        if(Utility.getShoppingItems().isEmpty()) {
+            GetData();
+        }else {
+            ShoppingPageRecyclerAdapter shoppingAdapter = new ShoppingPageRecyclerAdapter(Utility.getShoppingItems());
+            shoppingViewLeft.setAdapter(shoppingAdapter);
+            shoppingProg.setVisibility(View.GONE);
+        }
+    }
+
 
 
     public void GetData(){
@@ -61,6 +85,7 @@ public class ShoppingFragment extends Fragment {
                     Utility.setShoppingItems( response.body());
                     ShoppingPageRecyclerAdapter shoppingAdapter = new ShoppingPageRecyclerAdapter(Utility.getShoppingItems());
                     shoppingViewLeft.setAdapter(shoppingAdapter);
+                    shoppingProg.setVisibility(View.GONE);
                 } else {
                     // Handle unsuccessful response
                 }
@@ -68,7 +93,8 @@ public class ShoppingFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<Shopping>> call, Throwable t) {
-                // Handle network failure
+                shoppingProg.setVisibility(View.GONE);
+                        shoppingError.setVisibility(View.VISIBLE);
             }
         });
     }
