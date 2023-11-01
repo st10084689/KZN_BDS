@@ -1,11 +1,14 @@
 package com.example.bds_kzn;
 
+import java.util.Date;
+
 public class Event {
 
     private int id;
     private String title;
     private String description;
     private String images;
+    public String eventTime;
 
     public int getId() {
         return id;
@@ -37,5 +40,13 @@ public class Event {
 
     public void setImages(String images) {
         this.images = images;
+    }
+
+    public String getEventTime() {
+        return eventTime;
+    }
+
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
     }
 }

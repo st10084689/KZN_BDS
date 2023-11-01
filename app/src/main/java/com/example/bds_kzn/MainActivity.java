@@ -15,6 +15,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -88,95 +89,116 @@ public class MainActivity extends AppCompatActivity {
         chosenUnderline = homeUnderLine;
 
         //initialising the nav slider button
-        navSliderBtn = findViewById(R.id.nav_slider_button);
-
-        TransitionDrawable transitionDrawable = (TransitionDrawable) getResources().getDrawable(R.drawable.nav_bar_transition_btn);
-        navSliderBtn.setBackground(transitionDrawable);
-        isPressed = false;
-        navSliderBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                    if (isPressed) {
-                        // If already pressed, transition back to normal state
-                        transitionDrawable.reverseTransition(300); // Reverses the transition
-                    } else {
-                        // If not pressed, transition to pressed state
-                        transitionDrawable.startTransition(300);
-                    }
-                if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
-                    drawerLayout.closeDrawer(GravityCompat.END);
-                } else {
-                    drawerLayout.openDrawer(GravityCompat.END);
-                }
-                    isPressed = !isPressed; // Toggle the state
-                }
-            });
-
-
-        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-
-            }
-
-            @Override
-            public void onDrawerOpened(@NonNull View drawerView) {
-
-            }
-
-            @Override
-            public void onDrawerClosed(@NonNull View drawerView) {
-                transitionDrawable.reverseTransition(300);
-                isPressed = !isPressed;
-
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-
-            }
-        });
+//        navSliderBtn = findViewById(R.id.nav_slider_button);
+//
+//        TransitionDrawable transitionDrawable = (TransitionDrawable) getResources().getDrawable(R.drawable.nav_bar_transition_btn);
+//        navSliderBtn.setBackground(transitionDrawable);
+//        isPressed = false;
+//        navSliderBtn.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view) {
+//                    if (isPressed) {
+//                        // If already pressed, transition back to normal state
+//                        transitionDrawable.reverseTransition(300); // Reverses the transition
+//                    } else {
+//                        // If not pressed, transition to pressed state
+//                        transitionDrawable.startTransition(300);
+//                    }
+//                if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+//                    drawerLayout.closeDrawer(GravityCompat.END);
+//                } else {
+//                    drawerLayout.openDrawer(GravityCompat.END);
+//                }
+//                    isPressed = !isPressed; // Toggle the state
+//                }
+//            });
+//
+//
+//        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+//            @Override
+//            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawerOpened(@NonNull View drawerView) {
+//
+//            }
+//
+//            @Override
+//            public void onDrawerClosed(@NonNull View drawerView) {
+//                transitionDrawable.reverseTransition(300);
+//                isPressed = !isPressed;
+//
+//            }
+//
+//            @Override
+//            public void onDrawerStateChanged(int newState) {
+//
+//            }
+//        });
 
 
         homeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                changeNavBarColors(R.drawable.home_icon_selected, homeIcon,homeText,homeUnderLine);
-                animateUnderline(chosenUnderline,homeUnderLine);
-                chosenUnderline = homeUnderLine;
                 loadFragment(new HomeFragment());
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        changeNavBarColors(R.drawable.home_icon_selected, homeIcon,homeText,homeUnderLine);
+                        animateUnderline(chosenUnderline,homeUnderLine);
+                        chosenUnderline = homeUnderLine;
+                    }
+                }, 250);
             }
         });
 
         shoppingBtn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                changeNavBarColors(R.drawable.shopping_icon_selected, shoppingIcon,shoppingText,shoppingUnderline);
-                animateUnderline(chosenUnderline,shoppingUnderline);
-                chosenUnderline = shoppingUnderline;
                 loadFragment(new ShoppingFragment());
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        changeNavBarColors(R.drawable.shopping_icon_selected, shoppingIcon,shoppingText,shoppingUnderline);
+                        animateUnderline(chosenUnderline,shoppingUnderline);
+                        chosenUnderline = shoppingUnderline;
+                    }
+                }, 250);
             }
         });
 
         eventsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeNavBarColors(R.drawable.events_icon_selected, eventIcon, eventText,eventUnderline);
-                animateUnderline(chosenUnderline,eventUnderline);
-                chosenUnderline = eventUnderline;
                 loadFragment(new EventsFragment());
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        changeNavBarColors(R.drawable.events_icon_selected, eventIcon, eventText,eventUnderline);
+                        animateUnderline(chosenUnderline,eventUnderline);
+                        chosenUnderline = eventUnderline;
+                    }
+                }, 250);
             }
         });
 
         aboutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                changeNavBarColors(R.drawable.account_icon_selected, aboutIcon,aboutText,aboutUnderline);
-                animateUnderline(chosenUnderline,aboutUnderline);
-                chosenUnderline = aboutUnderline;
                 loadFragment(new AboutUsFragment());
+
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        changeNavBarColors(R.drawable.account_icon_selected, aboutIcon,aboutText,aboutUnderline);
+                        animateUnderline(chosenUnderline,aboutUnderline);
+                        chosenUnderline = aboutUnderline;
+                    }
+                }, 250);
             }
         });
 

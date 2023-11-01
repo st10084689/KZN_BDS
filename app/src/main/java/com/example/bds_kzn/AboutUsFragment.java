@@ -20,6 +20,8 @@ public class AboutUsFragment extends Fragment {
     private RecyclerView membersRecView;
     private RecyclerView statementRecView;
 
+
+
     private static final String TAG = "AboutUsFragment";
 
     private List<Statement> statements = new ArrayList<>();

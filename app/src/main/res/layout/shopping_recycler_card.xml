@@ -6,7 +6,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="10dp"
-    android:id="@+id/CardLayoutItem"
+    android:id="@+id/ShoppingCard"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -14,19 +14,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
-            android:id="@+id/shopping_title"
+            android:id="@+id/shopping_image"
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:scaleType="centerCrop"
             android:background="@drawable/place_holder_shopping"
             android:layout_alignParentTop="true"/>
         <TextView
-            android:id="@+id/statement_title"
+            android:id="@+id/shopping_title"
             android:fontFamily="@font/roboto_regular"
             android:textSize="18sp"
             android:layout_marginTop="5dp"
             android:textColor="@color/black"
-            android:layout_below="@+id/shopping_title"
+            android:layout_below="@+id/shopping_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginLeft="12dp"
-                android:layout_below="@id/statement_title"
+                android:layout_below="@id/shopping_title"
                 android:fontFamily="@font/roboto_regular"
                 android:text="R0.00"
                 android:textColor="@color/orange"

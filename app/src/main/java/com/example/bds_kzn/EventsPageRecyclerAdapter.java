@@ -21,7 +21,6 @@ public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRe
 
     private List<Event> events = new ArrayList<>();
 
-    public static String BASE_URL = "https://testingsitewil.azurewebsites.net/";
 
     public EventsPageRecyclerAdapter(List<Event> _events) {
         events = _events;
@@ -42,11 +41,33 @@ public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRe
             holder.eventTitle.setText(model.getTitle());
         Log.d(TAG, "onBindViewHolder: event Title" + model.getTitle());
 
-            holder.eventDescripion.setText(model.getDescription());
+        String originalDescription = model.getDescription();
+        String[] words = originalDescription.split("\\s+");
+
+        StringBuilder truncatedDescription = new StringBuilder();
+        int wordCount = 0;
+        for (String word : words) {
+            if (wordCount < 5) {
+                truncatedDescription.append(word).append(" ");
+                wordCount++;
+            } else {
+                break;
+            }
+        }
+
+
+        String finalDescription = truncatedDescription.toString().trim();
+
+
+        if (wordCount < words.length) {
+            finalDescription += "...";
+        }
+
+            holder.eventDescripion.setText(finalDescription);
 
 
 
-            String imageUrl = BASE_URL + model.getImages();
+            String imageUrl = Utility.getBaseUrl() + model.getImages();
             Glide.with(holder.eventImage)
                     .load(imageUrl)
                     .centerCrop()

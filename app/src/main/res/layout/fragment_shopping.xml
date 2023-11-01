@@ -59,6 +59,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     >
+
+
+                    <ImageView
+                        android:id="@+id/shoppingError"
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="500dp"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:textColor="@color/orange"
+                        android:gravity="center"
+                        android:layout_centerInParent="true"
+                        android:visibility="gone"
+                        android:src="@drawable/perm_scan_wifi"
+                        />
+
+                    <ProgressBar
+                        android:id="@+id/loading_progress_shopping"
+                        android:layout_width="wrap_content"
+                        android:layout_height="500dp"
+                        android:layout_centerInParent="true"
+                        android:indeterminateTint="@color/orange" />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/shopping_page_recycler"
                     android:layout_width="wrap_content"

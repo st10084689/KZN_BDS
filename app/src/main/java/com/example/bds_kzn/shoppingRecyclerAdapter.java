@@ -1,5 +1,7 @@
 package com.example.bds_kzn;
 
+import android.content.Intent;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,14 +10,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 
+import java.util.List;
 
 
 public class shoppingRecyclerAdapter  extends RecyclerView.Adapter<shoppingRecyclerAdapter.ItemHolder> {
 
     private static final String TAG = "shoppingRecyclerAdapter";
+
+    private List<Shopping> shopItems;
+
+    public shoppingRecyclerAdapter(List<Shopping> shopItems) {
+        this.shopItems = shopItems;
+    }
 
     @NonNull
     @Override
@@ -27,31 +38,62 @@ public class shoppingRecyclerAdapter  extends RecyclerView.Adapter<shoppingRecyc
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
         //if statement to make the last item in the list to have a margin of 15dp . change out 6 to the dataset size
-        if (position == 6 - 1) {
+        if (position == 5 - 1) {
 
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.itemView.getLayoutParams();
             params.rightMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, holder.itemView.getResources().getDisplayMetrics());
             holder.itemView.setLayoutParams(params);
         }
 
+        Shopping model = shopItems.get(position);
+
+        holder.shoppingTitle.setText(model.getTitle());
+        Log.d(TAG, "onBindViewHolder: shopping Title" + model.getTitle());
+        double price = model.getPrice();
+        String priceAsString = "R" + price;
+        holder.shoppingPrice.setText(priceAsString);
+        Log.d(TAG, "onBindViewHolder: "+model.getPrice());
+
+        holder.shoppingCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toShoppingDetails = new Intent(view.getContext(), shopping_details.class);
+                toShoppingDetails.putExtra("Position",position);
+                view.getContext().startActivity(toShoppingDetails);
+            }
+        });
+
+        String imageUrl = Utility.getBaseUrl() + model.getImages();
+        Glide.with(holder.shoppingImage)
+                .load(imageUrl)
+                .centerCrop()
+                .into(holder.shoppingImage);
+
+
+
+        Log.d(TAG, "onBindViewHolder: "+ imageUrl);
+
+
     }
 
     @Override
     public int getItemCount() {
-        return 6;
+        return 5;
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder{
 
         private TextView shoppingTitle;
-        private TextView shoppingDescripion;
+        private TextView shoppingPrice;
         private ImageView shoppingImage;
+
+        private CardView shoppingCard;
         public ItemHolder(@NonNull View itemView) {
             super(itemView);
-            shoppingImage = itemView.findViewById(R.id.statement_badge);
-            shoppingTitle = itemView.findViewById(R.id.statement_title);
-            shoppingDescripion = itemView.findViewById(R.id.shopping_description_txt);
-
+            shoppingImage = itemView.findViewById(R.id.shopping_image);
+            shoppingTitle = itemView.findViewById(R.id.shopping_title);
+            shoppingPrice = itemView.findViewById(R.id.shopping_description_txt);
+            shoppingCard = itemView.findViewById(R.id.ShoppingCard);
 
         }
 

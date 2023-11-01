@@ -5,6 +5,8 @@ public class Shopping {
     public int id;
     public String title;
     public String description;
+
+    public Double price;
     public String images;
 
     public int getId() {
@@ -37,5 +39,13 @@ public class Shopping {
 
     public void setImages(String images) {
         this.images = images;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

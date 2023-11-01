@@ -29,31 +29,7 @@
     </FrameLayout>
 
 
-        <RelativeLayout
-            android:id="@+id/menu_relative"
-            android:layout_width="match_parent"
-            android:layout_height="232dp"
-            android:layout_alignParentTop="true"
 
-            >
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/login_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_centerVertical="true"
-                android:background="@drawable/login_button"/>
-
-            <androidx.appcompat.widget.AppCompatImageButton
-                android:id="@+id/nav_slider_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="35dp"
-                android:layout_centerVertical="true"
-                android:background="@drawable/nav_bar_transition_btn"/>
-
-        </RelativeLayout>
 </RelativeLayout>
 </androidx.core.widget.NestedScrollView>
 
