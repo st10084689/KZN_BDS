@@ -20,7 +20,7 @@ Button dismissBtn;
        dismissBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss(); // Close the dialog
+                dismiss(); // Closes the dialog
             }
         });
         return view;

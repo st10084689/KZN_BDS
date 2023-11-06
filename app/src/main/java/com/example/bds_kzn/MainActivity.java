@@ -2,6 +2,7 @@ package com.example.bds_kzn;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -31,20 +32,10 @@ import android.widget.TextView;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private ImageView homeIcon,shoppingIcon,eventIcon,aboutIcon;
-
-    private ImageView homeUnderLine, shoppingUnderline, eventUnderline, aboutUnderline,chosenUnderline;
-
-    private TextView homeText,shoppingText, eventText, aboutText;
-
-    private ImageButton navSliderBtn;
-
-
+    ImageView homeIcon,shoppingIcon,eventIcon,aboutIcon;
+    ImageView homeUnderLine, shoppingUnderline, eventUnderline, aboutUnderline,chosenUnderline;
+    TextView homeText,shoppingText, eventText, aboutText;
     private DrawerLayout drawerLayout;
-
-    private boolean isPressed ;
-
-
     private RelativeLayout homeBtn,shoppingBtn,eventsBtn,aboutBtn;
 
     private static final String TAG = "MainActivity";
@@ -53,17 +44,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         init();
 
 
     }
 
     public void init(){
+
         //initializing the buttons
         homeBtn = findViewById(R.id.home_relative);
         shoppingBtn = findViewById(R.id.shopping_relative);
         eventsBtn = findViewById(R.id.event_relative);
         aboutBtn = findViewById(R.id.about_relative);
+
+
 
 //the drawerlayout...
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -87,58 +82,6 @@ public class MainActivity extends AppCompatActivity {
         eventUnderline = findViewById(R.id.event_underline);
         aboutUnderline = findViewById(R.id.about_underline);
         chosenUnderline = homeUnderLine;
-
-        //initialising the nav slider button
-//        navSliderBtn = findViewById(R.id.nav_slider_button);
-//
-//        TransitionDrawable transitionDrawable = (TransitionDrawable) getResources().getDrawable(R.drawable.nav_bar_transition_btn);
-//        navSliderBtn.setBackground(transitionDrawable);
-//        isPressed = false;
-//        navSliderBtn.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view) {
-//                    if (isPressed) {
-//                        // If already pressed, transition back to normal state
-//                        transitionDrawable.reverseTransition(300); // Reverses the transition
-//                    } else {
-//                        // If not pressed, transition to pressed state
-//                        transitionDrawable.startTransition(300);
-//                    }
-//                if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
-//                    drawerLayout.closeDrawer(GravityCompat.END);
-//                } else {
-//                    drawerLayout.openDrawer(GravityCompat.END);
-//                }
-//                    isPressed = !isPressed; // Toggle the state
-//                }
-//            });
-//
-//
-//        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-//            @Override
-//            public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-//
-//            }
-//
-//            @Override
-//            public void onDrawerOpened(@NonNull View drawerView) {
-//
-//            }
-//
-//            @Override
-//            public void onDrawerClosed(@NonNull View drawerView) {
-//                transitionDrawable.reverseTransition(300);
-//                isPressed = !isPressed;
-//
-//            }
-//
-//            @Override
-//            public void onDrawerStateChanged(int newState) {
-//
-//            }
-//        });
-
-
         homeBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -209,17 +152,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void loadFragment(Fragment fragment) {
+    protected void loadFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.content_fragment, fragment);
-        fragmentTransaction.addToBackStack(null); // Optional, allows the user to navigate back
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
 
 
-    private void changeNavBarColors(int drawableValue, ImageView image,TextView text, ImageView underLine){
+    protected void changeNavBarColors(int drawableValue, ImageView image,TextView text, ImageView underLine){
         homeIcon.setImageResource(R.drawable.home_icon);
         shoppingIcon.setImageResource(R.drawable.shopping_bag_icon);
         aboutIcon.setImageResource(R.drawable.about_us_icon);
@@ -248,7 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-    private void animateUnderline( ImageView chosenUnderline,ImageView targetUnderline) {
+    protected void animateUnderline( ImageView chosenUnderline,ImageView targetUnderline) {
 
 
         int[] startPosition = new int[2];
