@@ -45,7 +45,7 @@ private Button purchaseButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_details);
         Intent intent = getIntent();
-         position = intent.getIntExtra("Position", -1);
+         position = intent.getIntExtra("Position", 1);
          init();
 
 
@@ -114,7 +114,6 @@ private Button purchaseButton;
         String ImageUrl = Utility.getBaseUrl() + shopItem.getImages();
         Glide.with(shoppingImage)
                 .load(ImageUrl)
-                .centerCrop()
                 .into(shoppingImage);
     }
 

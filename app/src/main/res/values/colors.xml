@@ -5,4 +5,5 @@
     <color name="grey"> #52575A</color>
     <color name="orange">#F58A09</color>
     <color name="grey_fill">#1E1B19</color>
+    <color name="red">#FF0000</color>
 </resources>

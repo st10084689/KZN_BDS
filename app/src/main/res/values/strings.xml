@@ -10,7 +10,7 @@
     <string name="shopping">Shopping</string>
     <string name="events">Events</string>
     <string name="about">About Us</string>
-    <string name="UpComingEvents">UpComing Events</string>
+    <string name="UpComingEvents">UpComing Event</string>
     <string name="EventTitle">Event Title</string>
     <string name="description">description \n</string>
     <string name="shopping_title">Shopping Title</string>
@@ -38,6 +38,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="Payments">Payment</string>
 
 
 </resources>

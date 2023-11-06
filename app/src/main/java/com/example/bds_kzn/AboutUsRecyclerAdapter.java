@@ -58,11 +58,11 @@ public class AboutUsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
                         StatementItemHolder statementHolder = (StatementItemHolder) holder; // Cast to StatementItemHolder
 
-                        // Set the title and label of the statement.
+                        // Sets the title and label of the statement.
                         statementHolder.statementTitle.setText(statement.getTitle());
                         statementHolder.statementLabel.setText(statement.getLabel());
 
-                        // Load the image into the ImageView.
+                        // Loads the image into the ImageView.
                         Glide.with(statementHolder.statementBadge.getContext())
                                 .load(statement.getImage())
                                 .centerCrop()
@@ -70,7 +70,7 @@ public class AboutUsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 } else if (typeRecycler == MEMBER_REC) {
                         MemberItemHolder memberHolder = (MemberItemHolder) holder; // Cast to MemberItemHolder
                         Statement statement = Statements.get(position);
-                        // Set the title and label of the statement.
+                        // Sets the title and label of the statement.
                         memberHolder.memberName.setText(statement.getTitle());
                         memberHolder.memberDescription.setText(statement.getLabel());
                         // Load the image into the ImageView.

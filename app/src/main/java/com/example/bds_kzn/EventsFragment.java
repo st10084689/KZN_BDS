@@ -25,22 +25,12 @@ import retrofit2.Retrofit;
 
 public class EventsFragment extends Fragment {
     private RecyclerView eventPageRecycler;
-
-    private CardView mainContentCard;
-
-    private List<Event> events;
-    
     private ImageView eventsError;
     
     private ProgressBar eventsProgressBar;
 
     private static final String TAG = "EventsFragment";
 
-
-
-    public EventsFragment() {
-        // Required empty public constructor
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,7 +83,7 @@ public class EventsFragment extends Fragment {
 //                    sortedEventList = sortByDateTime(Utility.getEventItems());
 //                    sortedEventList = GetFirstFive(sortedEventList);
                 } else {
-                    // Handle unsuccessful response
+
                 }
             }
 

@@ -62,6 +62,7 @@ public class ShoppingFragment extends Fragment {
     }
 
     public void loadShoppingRecycler(){
+
         if(Utility.getShoppingItems().isEmpty()) {
             GetData();
         }else {
