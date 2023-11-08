@@ -69,7 +69,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
                     <TextView
                         android:id="@+id/EventDetailsTitle"
                         android:layout_width="wrap_content"
@@ -80,6 +79,7 @@
                         android:textColor="@color/black"
                         android:layout_marginLeft="5dp"
                         android:layout_marginRight="5dp"
+                        android:textAlignment="center"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="32dp"
                         />
@@ -100,7 +100,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/eventImageCard"
         android:layout_width="wrap_content"
-        android:layout_height="500dp"
+        android:layout_height="350dp"
         android:layout_below="@id/EventDetailsDescription"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
@@ -115,14 +115,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"/>
     </androidx.cardview.widget.CardView>
     <RelativeLayout
         android:id="@+id/bottomTxtBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/eventImageCard"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp">
         <TextView
             android:layout_width="40dp"
@@ -142,9 +142,25 @@
             android:layout_centerHorizontal="true"
             android:fontFamily="@font/roboto_regular"
             android:textSize="18sp"
+            android:layout_centerVertical="true"
             android:textColor="@color/black"
             android:text="00/00/0000"
             />
+
+        <TextView
+            android:id="@+id/event_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp"
+            android:layout_toRightOf="@id/event_date"
+            android:fontFamily="@font/roboto_regular"
+            android:text="at 0:00"
+            android:textColor="@color/black"
+            android:textSize="11sp" />
     </RelativeLayout>
 
 

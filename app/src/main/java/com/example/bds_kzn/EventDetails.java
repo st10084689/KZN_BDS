@@ -16,11 +16,11 @@ import com.bumptech.glide.Glide;
 
 public class EventDetails extends AppCompatActivity {
 
-    private TextView eventTitle, eventDescription, eventDate;
+    private TextView eventTitle, eventDescription, eventDate,eventTime;
 
     private ImageView eventImage;
 
-    private String title, description, images,date;
+    private String title, description, images,date,time;
 
     private RelativeLayout backPressedBtn;
 
@@ -42,6 +42,7 @@ public class EventDetails extends AppCompatActivity {
         description = getPosition.getStringExtra("eventDescription");
         images = getPosition.getStringExtra("eventImages");
         date = getPosition.getStringExtra("eventDate");
+        time = getPosition.getStringExtra("eventTime");
 
         backPressedBtn = findViewById(R.id.on_back_button);
 
@@ -50,6 +51,7 @@ public class EventDetails extends AppCompatActivity {
         eventTitle = findViewById(R.id.EventDetailsTitle);
         eventDescription = findViewById(R.id.EventDetailsDescription);
         eventDate = findViewById(R.id.event_date);
+        eventTime = findViewById(R.id.event_time);
 
 
         eventImage = findViewById(R.id.event_image);
@@ -61,6 +63,16 @@ public class EventDetails extends AppCompatActivity {
         eventTitle.setText(title);
         eventDescription.setText(description);
         eventDate.setText(date);
+        eventTime.setText("at " + time);
+
+        eventImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EventDetails.this, imageViewerAcitvity.class);
+                intent.putExtra("IMAGE_PATH", images);
+                startActivity(intent);
+            }
+        });
 
         backPressedBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,12 +1,7 @@
 package com.example.bds_kzn;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class Event {
 
@@ -49,19 +44,49 @@ public class Event {
     }
 
 
+    public String getEventDate() {
+        String inputDateString = eventTime;
+        DateTimeFormatter inputFormatter = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        }
+
+        LocalDateTime dateTime = null;
+        dateTime = LocalDateTime.parse(inputDateString, inputFormatter);
+
+        DateTimeFormatter outputFormatter = null;
+        outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String formattedDate = dateTime.format(outputFormatter);
+        return formattedDate;
+    }
+
+
+
+
+
+    public void setEventDate(String eventTime) {
+        this.eventTime = eventTime;
+    }
+
     public String getEventTime() {
         String inputDateString = eventTime;
         DateTimeFormatter inputFormatter = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
         }
+
         LocalDateTime dateTime = null;
-            dateTime = LocalDateTime.parse(inputDateString, inputFormatter);
+        dateTime = LocalDateTime.parse(inputDateString, inputFormatter);
+
         DateTimeFormatter outputFormatter = null;
-            outputFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            String formattedDate = dateTime.format(outputFormatter);
+        outputFormatter = DateTimeFormatter.ofPattern("HH:mm a");
+        String formattedDate = dateTime.format(outputFormatter);
         return formattedDate;
     }
+
+
+
+
 
     public void setEventTime(String eventTime) {
         this.eventTime = eventTime;

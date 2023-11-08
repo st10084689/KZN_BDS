@@ -17,6 +17,7 @@
             android:id="@+id/event_image"
             android:layout_width="match_parent"
             android:layout_height="150dp"
+            android:scaleType="centerCrop"
             android:layout_alignParentTop="true"/>
         <TextView
             android:id="@+id/event_title"
@@ -42,8 +43,9 @@
                 android:layout_marginLeft="27dp"
                 android:layout_marginRight="10dp"
                 android:fontFamily="@font/roboto_regular"
-                android:gravity="center"
                 android:textSize="18sp"
+                android:maxWidth="200dp"
+                android:textAlignment="textStart"
                 android:text="@string/description"/>
             <RelativeLayout
                 android:id="@+id/event_Date_Rel"
