@@ -2,8 +2,6 @@ package com.example.bds_kzn;
 
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Icon;
-import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,16 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +86,7 @@ public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRe
 
 
 
-        holder.eventDate.setText(model.getEventTime());
+        holder.eventDate.setText(model.getEventDate());
         String imageUrl = Utility.getBaseUrl() + model.getImages();
         holder.eventCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +97,8 @@ public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRe
                 toEventDetails.putExtra("eventTitle", model.getTitle());
                 toEventDetails.putExtra("eventImages", imageUrl);
                 toEventDetails.putExtra("eventDescription",model.getDescription());
-                toEventDetails.putExtra("eventDate",model.getEventTime());
+                toEventDetails.putExtra("eventDate",model.getEventDate());
+                toEventDetails.putExtra("eventTime",model.getEventTime());
                 view.getContext().startActivity(toEventDetails);
             }
         });

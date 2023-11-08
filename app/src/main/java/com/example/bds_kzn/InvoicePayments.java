@@ -16,11 +16,9 @@ public class InvoicePayments {
         private String reference;
         private String state;
 
-        private String firstName;
 
-        private String Surname;
 
-        public InvoicePayments(String siteReference, String currencyISOCode, int amount, String origin, String createdUTCDate, String originReference, String reference, String state, String firstName, String Surname) {
+        public InvoicePayments(String siteReference, String currencyISOCode, int amount, String origin, String createdUTCDate, String originReference, String reference, String state) {
             this.siteReference = siteReference;
             this.currencyISOCode = currencyISOCode;
             this.amount = amount;
@@ -29,8 +27,7 @@ public class InvoicePayments {
             this.originReference = originReference;
             this.reference = reference;
             this.state = state;
-            this.firstName = firstName;
-            this.Surname = Surname;
+
         }
 
         public String getSiteReference() {

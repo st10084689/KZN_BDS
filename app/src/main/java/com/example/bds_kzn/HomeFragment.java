@@ -1,13 +1,9 @@
 package com.example.bds_kzn;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,15 +18,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -67,6 +60,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void init(View view) {
+       //initialising the util class
+        Utility util = new Utility();
         //initializing the event recycler
         eventsRecycler = view.findViewById(R.id.events_recycler);
 
@@ -76,6 +71,7 @@ public class HomeFragment extends Fragment {
 
         //initializing the event recycler
         shoppingRecycler = view.findViewById(R.id.shopping_recycler);
+
 
         shoppingRecycler.setHasFixedSize(true);
         shoppingRecycler.setLayoutManager(new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -170,7 +166,7 @@ public class HomeFragment extends Fragment {
 
         for (Event event : events) {
             try {
-                Date eventDate = dateFormat.parse(event.getEventTime());
+                Date eventDate = dateFormat.parse(event.getEventDate());
 
                 if (closestDate == null || Math.abs(eventDate.getTime() - presentDate.getTime()) < Math.abs(closestDate.getTime() - presentDate.getTime())) {
                     closestDate = eventDate;
@@ -207,7 +203,7 @@ public class HomeFragment extends Fragment {
             public void onFailure(Call<List<Shopping>> call, Throwable t) {
                 shoppingError.setVisibility(View.VISIBLE);
                 shoppingProg.setVisibility(View.GONE);
-                Utility util = new Utility();
+
             }
         });
     }

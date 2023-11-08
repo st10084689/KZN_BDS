@@ -206,8 +206,7 @@ private CheckBox agreeToTerms;
     }
 
     private void sendPaymentRequest() {
-        List<InvoicePayments.LineItem> lineItems = new ArrayList<>();
-// Creates the requested object
+       // Creates the requested object
         InvoicePayments request = new InvoicePayments(
                 "kzn_bds_App",
                 "ZAR",
@@ -216,9 +215,7 @@ private CheckBox agreeToTerms;
                 "2023-11-03T13:30:48.9070611Z",
                 "micros_129473",
                 reference,
-                "open",
-                "John",
-                "Doe"
+                "open"
         );
 
        properties = new Properties();
