@@ -2,6 +2,9 @@ package com.example.bds_kzn;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,11 +86,9 @@ public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRe
         }
 
             holder.eventDescripion.setText(finalDescription);
+        holder.eventDate.setText(model.getDate());
 
 
-
-        holder.eventDate.setText(model.getEventDate());
-        String imageUrl = Utility.getBaseUrl() + model.getImages();
         holder.eventCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,21 +96,19 @@ public class EventsPageRecyclerAdapter extends RecyclerView.Adapter<EventsPageRe
                 toEventDetails.putExtra("eventPosition", position);
 
                 toEventDetails.putExtra("eventTitle", model.getTitle());
-                toEventDetails.putExtra("eventImages", imageUrl);
+                toEventDetails.putExtra("eventImages", model.getImage());
                 toEventDetails.putExtra("eventDescription",model.getDescription());
-                toEventDetails.putExtra("eventDate",model.getEventDate());
-                toEventDetails.putExtra("eventTime",model.getEventTime());
+                toEventDetails.putExtra("eventDate",model.getDate());
                 view.getContext().startActivity(toEventDetails);
             }
         });
 
-
-            Glide.with(holder.eventImage)
-                    .load(imageUrl)
+                Glide.with(holder.eventImage)
+                    .load(model.getImage())
                     .centerCrop()
                     .into(holder.eventImage);
 
-        Log.d(TAG, "onBindViewHolder: "+ imageUrl);
+
     }
 
     @Override

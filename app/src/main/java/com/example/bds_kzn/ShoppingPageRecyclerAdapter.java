@@ -25,7 +25,7 @@ public class ShoppingPageRecyclerAdapter extends RecyclerView.Adapter<ShoppingPa
     private static final int VIEW_TYPE_NORMAL = 0;
     private static final int VIEW_TYPE_SMALL = 1;
 
-    List<Shopping> shop = new ArrayList<>();
+    List<Product> shop = new ArrayList<>();
 
     private int largeItemHeight = 400;
     private int smallItemHeight = 350;
@@ -33,7 +33,7 @@ public class ShoppingPageRecyclerAdapter extends RecyclerView.Adapter<ShoppingPa
 
     private Context context;
 
-    public ShoppingPageRecyclerAdapter(List<Shopping> _shop) {
+    public ShoppingPageRecyclerAdapter(List<Product> _shop) {
         shop = _shop;
     }
 
@@ -58,11 +58,11 @@ public class ShoppingPageRecyclerAdapter extends RecyclerView.Adapter<ShoppingPa
 
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
-        Shopping model = shop.get(position);
+        Product model = shop.get(position);
 
         holder.shoppingTitle.setText(model.getTitle());
         Log.d(TAG, "onBindViewHolder: shopping Title" + model.getTitle());
-        double price = model.getPrice();
+        double price = Double.parseDouble(model.getPrice());
         String priceAsString = "R" + price;
         holder.shoppingPrice.setText(priceAsString);
         Log.d(TAG, "onBindViewHolder: "+model.getPrice());
@@ -76,15 +76,10 @@ public class ShoppingPageRecyclerAdapter extends RecyclerView.Adapter<ShoppingPa
             }
         });
 
-        String imageUrl = Utility.getBaseUrl() + model.getImages();
         Glide.with(holder.shoppingImage)
-                .load(imageUrl)
+                .load(model.getImage())
                 .centerCrop()
                 .into(holder.shoppingImage);
-
-
-
-        Log.d(TAG, "onBindViewHolder: "+ imageUrl);
 
     }
 

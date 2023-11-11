@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Utility {
 
-    private static List<Shopping> shoppingItems;
+    private static List<Product> shoppingItems;
 
     private static List<Event> eventItems;
 
@@ -20,11 +20,11 @@ public class Utility {
         }
     }
 
-    public static List<Shopping> getShoppingItems() {
+    public static List<Product> getShoppingItems() {
         return shoppingItems;
     }
 
-    public static void setShoppingItems(List<Shopping> shoppingItems) {
+    public static void setShoppingItems(List<Product> shoppingItems) {
         Utility.shoppingItems = shoppingItems;
     }
 

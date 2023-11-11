@@ -6,10 +6,10 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface ApiInterface {
-    @GET("Events/GetAll")
-    Call<List<Event>> getEvents();
+    @GET("events")
+    Call<eventsResponse> getEvents();
 
-    @GET("Shopping/GetAll")
-    Call<List<Shopping>> getShopping();
+    @GET("products")
+    Call<shoppingResponse> getShopping();
 }
 

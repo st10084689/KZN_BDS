@@ -22,9 +22,9 @@ public class shoppingRecyclerAdapter  extends RecyclerView.Adapter<shoppingRecyc
 
     private static final String TAG = "shoppingRecyclerAdapter";
 
-    private List<Shopping> shopItems;
+    private List<Product> shopItems;
 
-    public shoppingRecyclerAdapter(List<Shopping> shopItems) {
+    public shoppingRecyclerAdapter(List<Product> shopItems) {
         this.shopItems = shopItems;
     }
 
@@ -38,18 +38,18 @@ public class shoppingRecyclerAdapter  extends RecyclerView.Adapter<shoppingRecyc
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
         //if statement to make the last item in the list to have a margin of 15dp . change out 6 to the dataset size
-        if (position == 5 - 1) {
+        if (position == shopItems.size() - 1) {
 
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) holder.itemView.getLayoutParams();
             params.rightMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 15, holder.itemView.getResources().getDisplayMetrics());
             holder.itemView.setLayoutParams(params);
         }
 
-        Shopping model = shopItems.get(position);
+        Product model = shopItems.get(position);
 
         holder.shoppingTitle.setText(model.getTitle());
         Log.d(TAG, "onBindViewHolder: shopping Title" + model.getTitle());
-        double price = model.getPrice();
+        double price = Double.parseDouble(model.getPrice());
         String priceAsString = "R" + price;
         holder.shoppingPrice.setText(priceAsString);
         Log.d(TAG, "onBindViewHolder: "+model.getPrice());
@@ -63,22 +63,25 @@ public class shoppingRecyclerAdapter  extends RecyclerView.Adapter<shoppingRecyc
             }
         });
 
-        String imageUrl = Utility.getBaseUrl() + model.getImages();
         Glide.with(holder.shoppingImage)
-                .load(imageUrl)
+                .load(model.getImage())
                 .centerCrop()
                 .into(holder.shoppingImage);
 
 
 
-        Log.d(TAG, "onBindViewHolder: "+ imageUrl);
+//        Log.d(TAG, "onBindViewHolder: "+ imageUrl);
 
 
     }
 
     @Override
     public int getItemCount() {
-        return 5;
+        if(shopItems.size() > 3){
+        return 5;}
+        else{
+            return shopItems.size();
+        }
     }
 
     public class ItemHolder extends RecyclerView.ViewHolder{

@@ -16,7 +16,7 @@ import com.bumptech.glide.Glide;
 
 public class EventDetails extends AppCompatActivity {
 
-    private TextView eventTitle, eventDescription, eventDate,eventTime;
+    private TextView eventTitle, eventDescription, eventDate;
 
     private ImageView eventImage;
 
@@ -51,7 +51,6 @@ public class EventDetails extends AppCompatActivity {
         eventTitle = findViewById(R.id.EventDetailsTitle);
         eventDescription = findViewById(R.id.EventDetailsDescription);
         eventDate = findViewById(R.id.event_date);
-        eventTime = findViewById(R.id.event_time);
 
 
         eventImage = findViewById(R.id.event_image);
@@ -63,7 +62,6 @@ public class EventDetails extends AppCompatActivity {
         eventTitle.setText(title);
         eventDescription.setText(description);
         eventDate.setText(date);
-        eventTime.setText("at " + time);
 
         eventImage.setOnClickListener(new View.OnClickListener() {
             @Override
