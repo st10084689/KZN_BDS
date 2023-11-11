@@ -166,7 +166,7 @@ public class HomeFragment extends Fragment {
 
         for (Event event : events) {
             try {
-                Date eventDate = dateFormat.parse(event.getEventDate());
+                Date eventDate = dateFormat.parse(event.getDate());
 
                 if (closestDate == null || Math.abs(eventDate.getTime() - presentDate.getTime()) < Math.abs(closestDate.getTime() - presentDate.getTime())) {
                     closestDate = eventDate;
@@ -183,13 +183,13 @@ public class HomeFragment extends Fragment {
     public void GetShoppingData(){
         ApiService apiService = new ApiService();
 
-        Call<List<Shopping>> call = apiService.getShopping();
+        Call<shoppingResponse> call = apiService.getShopping();
 
-        call.enqueue(new Callback<List<Shopping>>() {
+        call.enqueue(new Callback<shoppingResponse> () {
             @Override
-            public void onResponse(Call<List<Shopping>> call, Response<List<Shopping>> response) {
+            public void onResponse(Call<shoppingResponse>  call, Response<shoppingResponse>  response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Utility.setShoppingItems( response.body());
+                    Utility.setShoppingItems(response.body().getProducts());
                     shoppingRecyclerAdapter shoppingAdapter = new shoppingRecyclerAdapter(Utility.getShoppingItems());
                     shoppingRecycler.setAdapter(shoppingAdapter);
                     shoppingProg.setVisibility(View.GONE);
@@ -200,7 +200,7 @@ public class HomeFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Shopping>> call, Throwable t) {
+            public void onFailure(Call<shoppingResponse>  call, Throwable t) {
                 shoppingError.setVisibility(View.VISIBLE);
                 shoppingProg.setVisibility(View.GONE);
 
@@ -210,62 +210,31 @@ public class HomeFragment extends Fragment {
     public void GetEventData(){
         ApiService apiService = new ApiService();
 
-        Call<List<Event>> call = apiService.getEvents();
+        Call<eventsResponse> call = apiService.getEvents();
 
-        call.enqueue(new Callback<List<Event>>() {
+        call.enqueue(new Callback<eventsResponse>() {
             @Override
-            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+            public void onResponse(Call<eventsResponse> call, Response<eventsResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                   Utility.setEventItems(response.body());
+                    Utility.setEventItems(response.body().getEvents());
                     sortedEventList.add(findClosestEvent(Utility.getEventItems()));
                     EventsPageRecyclerAdapter EventAdapter = new EventsPageRecyclerAdapter(sortedEventList);
                     eventsRecycler.setAdapter(EventAdapter);
                     eventsProg.setVisibility(View.GONE);
-
                 } else {
 
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Event>> call, Throwable t) {
+            public void onFailure(Call<eventsResponse> call, Throwable t) {
                 // Handles network failure
-                Log.d(TAG, "onFailure: + failed");
+                Log.d(TAG, "onFailure: + failed"+ t +" call: "+ call);
                 eventsError.setVisibility(View.VISIBLE);
                 eventsProg.setVisibility(View.GONE);
             }
         });
     }
-//    private void changeNavBarColors(int drawableValue, ImageView image,TextView text, ImageView underLine){
-//       MainActivity main = new MainActivity();
-//
-//        main.homeIcon.setImageResource(R.drawable.home_icon);
-//        main.shoppingIcon.setImageResource(R.drawable.shopping_bag_icon);
-//        main.aboutIcon.setImageResource(R.drawable.about_us_icon);
-//        main.eventIcon.setImageResource(R.drawable.events_icon);
-//
-//        int baseColor = R.color.grey;
-//        int orange = R.color.orange;
-//
-//        //setting all the textViews to have a base color
-//        main.homeText.setTextColor(getResources().getColor(baseColor));
-//        main.shoppingText.setTextColor(getResources().getColor(baseColor));
-//        main.aboutText.setTextColor(getResources().getColor(baseColor));
-//        main.eventText.setTextColor(getResources().getColor(baseColor));
-//
-//
-//        //setting all the under to not disappear
-//        main.homeUnderLine.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-//        main.shoppingUnderline.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-//        main.eventUnderline.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-//        main.aboutUnderline.setBackgroundColor(Color.parseColor("#00FFFFFF"));
-//
-//        image.setImageResource(drawableValue);//changing the selected icons drawable to their _selected variant
-//        underLine.setBackgroundResource(R.drawable.chosen_underline);
-//
-//        text.setTextColor(getResources().getColor(orange));//changing the textcolor of the relevent textView
-//
-//    }
 
 }
 

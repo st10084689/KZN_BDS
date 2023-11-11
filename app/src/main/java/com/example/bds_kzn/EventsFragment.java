@@ -69,13 +69,13 @@ public class EventsFragment extends Fragment {
     public void GetEventData(){
         ApiService apiService = new ApiService();
 
-        Call<List<Event>> call = apiService.getEvents();
+        Call<eventsResponse> call = apiService.getEvents();
 
-        call.enqueue(new Callback<List<Event>>() {
+        call.enqueue(new Callback<eventsResponse>() {
             @Override
-            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+            public void onResponse(Call<eventsResponse> call, Response<eventsResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Utility.setEventItems(response.body());
+                    Utility.setEventItems(response.body().getEvents());
                     EventsPageRecyclerAdapter EventAdapter = new EventsPageRecyclerAdapter(Utility.getEventItems());
                     eventPageRecycler.setAdapter(EventAdapter);
                     eventsProgressBar.setVisibility(View.GONE);
@@ -88,7 +88,7 @@ public class EventsFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Event>> call, Throwable t) {
+            public void onFailure(Call<eventsResponse> call, Throwable t) {
                 // Handle network failure
                 Log.d(TAG, "onFailure e: + failed");
                 eventsError.setVisibility(View.VISIBLE);

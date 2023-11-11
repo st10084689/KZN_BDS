@@ -18,7 +18,7 @@ import java.util.List;
 
 
 public class ShoppingDetailsPopup extends DialogFragment {
-    private Shopping shoppingItems;
+    private Product shoppingItems;
     private OnDialogDismissListener listener;
     RelativeLayout dismissButton;
     @Nullable

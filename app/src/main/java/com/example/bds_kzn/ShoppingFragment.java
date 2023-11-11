@@ -77,13 +77,13 @@ public class ShoppingFragment extends Fragment {
     public void GetData(){
         ApiService apiService = new ApiService();
 
-        Call<List<Shopping>> call = apiService.getShopping();
+        Call<shoppingResponse> call = apiService.getShopping();
 
-        call.enqueue(new Callback<List<Shopping>>() {
+        call.enqueue(new Callback<shoppingResponse>() {
             @Override
-            public void onResponse(Call<List<Shopping>> call, Response<List<Shopping>> response) {
+            public void onResponse(Call<shoppingResponse> call, Response<shoppingResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    Utility.setShoppingItems( response.body());
+                    Utility.setShoppingItems( response.body().getProducts());
                     ShoppingPageRecyclerAdapter shoppingAdapter = new ShoppingPageRecyclerAdapter(Utility.getShoppingItems());
                     shoppingViewLeft.setAdapter(shoppingAdapter);
                     shoppingProg.setVisibility(View.GONE);
@@ -93,9 +93,9 @@ public class ShoppingFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Shopping>> call, Throwable t) {
+            public void onFailure(Call<shoppingResponse> call, Throwable t) {
                 shoppingProg.setVisibility(View.GONE);
-                        shoppingError.setVisibility(View.VISIBLE);
+                shoppingError.setVisibility(View.VISIBLE);
             }
         });
     }

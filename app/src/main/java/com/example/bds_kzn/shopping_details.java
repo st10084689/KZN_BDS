@@ -28,7 +28,7 @@ private TextView priceTxt;
 
 private ImageView shoppingImage;
 
-private Shopping shopItem;
+private Product shopItem;
 
 private int position;
 private RelativeLayout backPressedBtn;
@@ -58,7 +58,6 @@ private Button purchaseButton;
         shoppingImage = findViewById(R.id.imageShopping);
 
         shopItem = Utility.getShoppingItems().get(position);
-        String ImageUrl = Utility.getBaseUrl() + shopItem.getImages();
 
         shoppingTitle.setText(shopItem.getTitle());
 
@@ -88,7 +87,6 @@ private Button purchaseButton;
         scaleDown.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-                // This method is called when the animation starts.
             }
 
             @Override
@@ -98,7 +96,7 @@ private Button purchaseButton;
 
             @Override
             public void onAnimationRepeat(Animation animation) {
-                // This method is called if the animation repeats.
+
             }
         });
 
@@ -106,7 +104,7 @@ private Button purchaseButton;
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(shopping_details.this, imageViewerAcitvity.class);
-                intent.putExtra("IMAGE_PATH",ImageUrl );
+                intent.putExtra("IMAGE_PATH",shopItem.image );
                 startActivity(intent);
 
             }
@@ -124,7 +122,7 @@ private Button purchaseButton;
         shoppingDescription.setText(shopItem.getDescription());
 
         Glide.with(shoppingImage)
-                .load(ImageUrl)
+                .load(shopItem.image)
                 .into(shoppingImage);
     }
 
@@ -133,7 +131,7 @@ private Button purchaseButton;
         toEmail.setType("message/rfc822");
         toEmail.putExtra(Intent.EXTRA_EMAIL, new String[]{"admin3@bdskzn.co.za"});
         toEmail.putExtra(Intent.EXTRA_SUBJECT, "purchase information for " + shopItem.getTitle());
-        toEmail.putExtra(Intent.EXTRA_TEXT, "Hi, I'd like to purchase the" + shopItem.getTitle() + " for R" + shopItem.getPrice());
+        toEmail.putExtra(Intent.EXTRA_TEXT, "Hi, I'd like to purchase the " + shopItem.getTitle() + " for R" + shopItem.getPrice());
 
         startActivity(Intent.createChooser(toEmail, "Send Email"));
     }

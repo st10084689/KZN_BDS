@@ -1,22 +1,26 @@
 package com.example.bds_kzn;
+import com.google.gson.annotations.SerializedName;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-public class Event {
+public class Event{
+    public String _id;
+    public String title;
+    public String description;
+    public String image;
+    public String date;
+    public int __v;
 
-    private int id;
-    private String title;
-    private String description;
-    private String images;
-    public String eventTime;
-
-    public int getId() {
-        return id;
+    public String get_id() {
+        return _id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getTitle() {
@@ -35,20 +39,19 @@ public class Event {
         this.description = description;
     }
 
-    public String getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
-    public void setImages(String images) {
-        this.images = images;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-
-    public String getEventDate() {
-        String inputDateString = eventTime;
+    public String getDate() {
+        String inputDateString = date;
         DateTimeFormatter inputFormatter = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+          inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
         }
 
         LocalDateTime dateTime = null;
@@ -60,35 +63,17 @@ public class Event {
         return formattedDate;
     }
 
-
-
-
-
-    public void setEventDate(String eventTime) {
-        this.eventTime = eventTime;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getEventTime() {
-        String inputDateString = eventTime;
-        DateTimeFormatter inputFormatter = null;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
-        }
-
-        LocalDateTime dateTime = null;
-        dateTime = LocalDateTime.parse(inputDateString, inputFormatter);
-
-        DateTimeFormatter outputFormatter = null;
-        outputFormatter = DateTimeFormatter.ofPattern("HH:mm a");
-        String formattedDate = dateTime.format(outputFormatter);
-        return formattedDate;
+    public int get__v() {
+        return __v;
     }
 
-
-
-
-
-    public void setEventTime(String eventTime) {
-        this.eventTime = eventTime;
+    public void set__v(int __v) {
+        this.__v = __v;
     }
 }
+
+
